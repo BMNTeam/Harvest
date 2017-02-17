@@ -15,6 +15,9 @@
     @yield('content')
 </div>
 
+@include('includes.content')
+@include('includes.footer')
+
 <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 <script src=" {{ asset('js/common.js') }}"></script>
