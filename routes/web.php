@@ -13,4 +13,8 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('users');
+
+Route::get('/applications', function () {
+    return view('applications');
+})->name('applications');

@@ -31,13 +31,11 @@ gulp.task('coffee', function(){
 // Scripts
 gulp.task('scripts', function() {
 	return gulp.src([
-		'app/libs/jquery/dist/jquery.min.js',
-		'app/libs/bootstrap-3.3.7/js/bootstrap.min.js',
-        'app/libs/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+		'resources/assets/libs/js/*.js'
 		])
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
-	.pipe(gulp.dest('app/js'))
+	.pipe(gulp.dest('public/js'))
 	.pipe(browserSync.reload({stream: true}));
 });
 
@@ -50,12 +48,12 @@ gulp.task('browser-sync', function() {
 
 gulp.task('css', function(){
 	return gulp.src([
-		'app/libs/bootstrap-3.3.7/css/bootstrap.min.css'
+        'resources/assets/libs/css/*.css'
 
 	])
 		.pipe(concat('libs.min.css'))
 		.pipe(cleanCSS())
-		.pipe(gulp.dest('app/css'))
+		.pipe(gulp.dest('public/css'))
 });
 
 gulp.task('sass', function() {

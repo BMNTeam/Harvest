@@ -1,10 +1,10 @@
 <nav>
    <div class="main-menu">
        <ul>
-           <li class="active">Главная</li>
-           <li>Дополнение</li>
-           <li>Еще дополнение</li>
-           <li>Выход</li>
+           <li class="{{ Request::path() ==  '/' ? 'active' : ''  }}"><a href="{{ route('users') }}">Пользователи</a></li>
+           <li class="{{ Request::path() ==  'applications' ? 'active' : ''  }}"><a href="{{ route('applications') }}">Заявки</a></li>
+           <li><a href="">пункт меню</a></li>
+           <li><a href="">пункт меню</a></li>
        </ul>
    </div>
 </nav>
