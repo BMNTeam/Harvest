@@ -13,8 +13,16 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('users');
+})->name('users')->middleware('auth');
 
 Route::get('/applications', function () {
     return view('applications');
 })->name('applications');
+
+Route::get('/login', function (){
+    return view('login');
+})->name('login');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
