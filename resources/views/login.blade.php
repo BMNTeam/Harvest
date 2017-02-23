@@ -10,16 +10,19 @@
             <h4>Учетные данные:</h4>
         </div>
         <div class="add-user--form">
-            <form action="#" class="add">
+            <form action="{{ route('login') }}" method="POST" class="add">
+
+
                 <div class="form-group">
                     <div class="row">
+                        {{ csrf_field() }}
 
                         <div class="col-md-6">
 
 
                             <div class="form-group">
-                                <label for="user-name">Имя пользователя</label>
-                                <input type="text" class="form-control" name="user-name" id="user-name" placeholder="Петров А.А.">
+                                <label for="name">Имя пользователя</label>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Петров А.А.">
                             </div>
 
 
@@ -29,8 +32,8 @@
                         <div class="col-md-6">
 
                             <div class="form-group">
-                                <label for="user-login-password">Пароль</label>
-                                <input type="password" class="form-control" name="user-login-password" id="user-login-password" >
+                                <label for="password">Пароль</label>
+                                <input type="password" class="form-control" name="password" id="password" >
                             </div>
                         </div>
 

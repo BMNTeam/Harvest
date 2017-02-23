@@ -5,8 +5,14 @@
         <div class="current-user--top">
             <div class="user-info--section">
                 <i class="fa fa-user-circle-o"></i> <p class="text-uppercase">Добро пожаловать</p>
-                <a href="#">Барсуков М.Г.</a>
-                / <a href="#">выход</a></div>
+                <a href="#">
+                    @if(\Illuminate\Support\Facades\Auth::guest())
+                        Здравствуйте гость
+                    @else
+                    {{ \Illuminate\Support\Facades\Auth::user()->name }}
+                        @endif
+                </a>
+                / <a href="{{ route('logOut') }}">выход</a></div>
         </div>
 
     </div>

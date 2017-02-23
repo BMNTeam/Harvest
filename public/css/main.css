@@ -141,9 +141,9 @@ a {
   color: #b8b8b8;
   -webkit-transition: all ease-in .3s;
   transition: all ease-in .3s;
-  -webkit-transform: translateX(180px);
-      -ms-transform: translateX(180px);
-          transform: translateX(180px); }
+  -webkit-transform: translateX(105%);
+      -ms-transform: translateX(105%);
+          transform: translateX(105%); }
   .current-user--top.active {
     -webkit-transform: translateX(0px);
         -ms-transform: translateX(0px);
