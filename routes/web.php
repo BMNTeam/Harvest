@@ -11,14 +11,22 @@
 |
 */
 /*Application routes*/
-Route::get('/', function () {
-    return view('home');
-})->name('users')->middleware('auth');
 
-Route::get('/applications', function () {
-    return view('applications');
-})->name('applications')->middleware('auth');
+include('additional/addToDatabase.php');
 
+Route::get('/', [
+        'uses' => 'CustomersController@getCustomers',
+        'as' => 'users',
+        'middleware'    => 'auth'
+    ]
+);
+
+Route::get('/applications', [
+        'uses'       => 'OrdersController@getOrders',
+        'as'         => 'applications',
+        'middleware' => 'auth'
+    ]
+);
 
 
 
@@ -31,7 +39,7 @@ Route::get('/login', function (){
 
 Route::get('/register', function (){
     return view('auth.register');
-})->name('register')->middleware('auth');
+})->name('register');
 
 Route::post('/register', [
         'uses' => 'UserController@postSignUp',

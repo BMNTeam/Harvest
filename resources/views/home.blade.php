@@ -7,28 +7,40 @@
 @section('content')
     <div class="material--wrapper">
         <div class="content--heading">
-            <h4>Добавить пользователя:</h4>
+            <h4>Добавить покупателя:</h4>
         </div>
         <div class="add-user--form">
-            <form action="#" class="add">
+            <form action="{{ route('addCustomer') }}" method="post" class="add">
+
+                {{ csrf_field() }}
                 <div class="form-group">
                     <div class="row">
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="input-user-name">Имя пользователя</label>
-                                <input type="text" class="form-control" id="input-user-name" placeholder="Иванов И.И.">
+                                <label for="input-user-name">Имя покупателя</label>
+                                <input required type="text" name="input-user-name" class="form-control" id="input-user-name" placeholder="Иванов И.И.">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="input-user-contacts">Контакты</label>
-                                <input type="email" class="form-control" id="input-user-contacts" placeholder="г. Михайловск, ул. Ленина 234">
+                                <input required type="text" name="input-user-contacts" class="form-control" id="input-user-contacts" placeholder="г. Михайловск, ул. Ленина 234">
                             </div>
                         </div>
 
                     </div>
+
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li> Поле обязательно для заполнения</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <div class="row">
                         <div class="col-md-12">
@@ -44,7 +56,7 @@
 
     <div class="material--wrapper">
         <div class="content--heading">
-            <h4>Текущие пользователи:</h4>
+            <h4>Текущие покупатели:</h4>
         </div>
 
         <div class="active-users--table">
@@ -53,26 +65,20 @@
                 <thead>
                 <tr>
                     <th>#</th>
-                    <th>Имя пользователя</th>
+                    <th>Имя покупателя</th>
                     <th>Контакты</th>
                 </tr>
                 </thead>
                 <tbody>
+
+                @foreach($customers as $customer)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <th scope="row">{{ $customer->id }}</th>
+                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->contacts }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                </tr>
+
+                    @endforeach
                 </tbody>
             </table>
 

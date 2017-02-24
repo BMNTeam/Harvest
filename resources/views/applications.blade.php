@@ -18,8 +18,9 @@
                             <div class="form-group">
                                 <label for="select-culture-name">Культура</label>
                                 <select class="form-control select2-special" name="select-culture-name" id="select-culture-name">
-                                    <option value="">Зернобобовые</option>
-                                    <option value="">Морковь</option>
+                                    @foreach($cultures as $culture)
+                                        <option value="{{ $culture->id }}">{{ $culture->culture_name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

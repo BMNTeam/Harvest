@@ -7,10 +7,10 @@
                 <i class="fa fa-user-circle-o"></i> <p class="text-uppercase">Добро пожаловать</p>
                 <a href="#">
                     @if(\Illuminate\Support\Facades\Auth::guest())
-                        Здравствуйте гость
+                        Гость
                     @else
                     {{ \Illuminate\Support\Facades\Auth::user()->name }}
-                        @endif
+                    @endif
                 </a>
                 / <a href="{{ route('logOut') }}">выход</a></div>
         </div>
