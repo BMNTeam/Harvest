@@ -29,4 +29,11 @@ class CustomersController extends Controller
            'customers' => $customers
         ]);
     }
+
+    public function removeCustomer( $customer_id ) {
+        $customer_to_remove = Customer::where( 'id', $customer_id );
+        $customer_to_remove->delete();
+
+        return redirect()->back();
+    }
 }

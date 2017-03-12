@@ -164,3 +164,30 @@ a
     margin-bottom: 20px
     th
       padding: 8px
+a
+  &.remove
+    transition: all ease-in .3s
+    color: $remove
+    &:hover, &:active, &:focus
+      color: red
+      outline: none
+
+.pop-up--wrapper
+  padding: 10px
+
+  border-radius: 3px
+  background-color: #fff
+
+.buttons--wrapper
+  margin-bottom: 20px
+
+.hidden-form-button
+  &:last-child
+    margin-left: 20px
+  &.remove
+    &:hover
+      background-color: red
+      border-color: transparent
+#showModal
+  margin: 0 auto
+  width: 600px

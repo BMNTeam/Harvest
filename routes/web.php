@@ -54,6 +54,13 @@ Route::get('/logout', [
 );
 
 
+Route::get('/cultures', [
+        'uses'       => 'CultureController@view',
+        'as'         => 'cultures',
+        'middleware' => 'auth'
+    ]
+);
+
 
 Route::post('/login', [
         'uses' => 'UserController@postSignIn',

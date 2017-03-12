@@ -67,6 +67,7 @@
                     <th>#</th>
                     <th>Имя покупателя</th>
                     <th>Контакты</th>
+                    <th class="text-center">Операции</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -76,13 +77,17 @@
                     <th scope="row">{{ $customer->id }}</th>
                     <td>{{ $customer->name }}</td>
                     <td>{{ $customer->contacts }}</td>
+                    <td class="text-center">
+                        <a class="remove popup-modal" data-remove="{{ route('removeCustomer', $customer->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
+                    </td>
                 </tr>
 
-                    @endforeach
+                @endforeach
                 </tbody>
             </table>
 
         </div>
     </div>
+    @include('includes/pop-up-message')
 
 @endsection

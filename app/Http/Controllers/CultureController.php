@@ -22,4 +22,8 @@ class CultureController extends Controller
 
        return redirect()->back();
     }
+
+    public function view(){
+        return view('cultures');
+    }
 }

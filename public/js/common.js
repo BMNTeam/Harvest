@@ -29,3 +29,24 @@ $('.current-user--top i').on('click', function() {
   self = $('.current-user--top');
   return self.toggleClass('active');
 });
+
+$('.popup-modal').magnificPopup({
+  type: 'inline',
+  preloader: false,
+  modal: true,
+  callbacks: {
+    open: function() {
+      var $content, removeLink;
+      $content = this.currItem.el[0];
+      removeLink = $content.getAttribute('data-remove');
+      return $('#remove').on('click', function() {
+        return window.location = removeLink;
+      });
+    }
+  }
+});
+
+$(document).on("click", ".popup-modal-dismiss", function(e) {
+  e.preventDefault();
+  return $.magnificPopup.close();
+});

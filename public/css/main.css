@@ -178,3 +178,31 @@ a {
     margin-bottom: 20px; }
     .active-users--table .table th {
       padding: 8px; }
+
+a.remove {
+  -webkit-transition: all ease-in .3s;
+  transition: all ease-in .3s;
+  color: rgba(19, 65, 0, 0.58); }
+  a.remove:hover, a.remove:active, a.remove:focus {
+    color: red;
+    outline: none; }
+
+.pop-up--wrapper {
+  padding: 10px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  background-color: #fff; }
+
+.buttons--wrapper {
+  margin-bottom: 20px; }
+
+.hidden-form-button:last-child {
+  margin-left: 20px; }
+
+.hidden-form-button.remove:hover {
+  background-color: red;
+  border-color: transparent; }
+
+#showModal {
+  margin: 0 auto;
+  width: 600px; }

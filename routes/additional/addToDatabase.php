@@ -23,4 +23,11 @@ Route::post('/addCustomer', [
     ]
 );
 
+Route::get('/removeCustomer/{customer_id}', [
+        'uses' => 'CustomersController@removeCustomer',
+        'as' => 'removeCustomer',
+        'middleware' => 'auth'
+    ]
+);
+
 
