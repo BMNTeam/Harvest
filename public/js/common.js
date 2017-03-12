@@ -16,20 +16,6 @@ $('.table').DataTable({
   }
 });
 
-$('.select2-special').select2({
-  "language": {
-    "noResults": function() {
-      return "Ничего не найдено";
-    }
-  }
-});
-
-$('.current-user--top i').on('click', function() {
-  var self;
-  self = $('.current-user--top');
-  return self.toggleClass('active');
-});
-
 $('.popup-modal').magnificPopup({
   type: 'inline',
   preloader: false,
@@ -49,4 +35,46 @@ $('.popup-modal').magnificPopup({
 $(document).on("click", ".popup-modal-dismiss", function(e) {
   e.preventDefault();
   return $.magnificPopup.close();
+});
+
+$('.select2-special').select2({
+  "language": {
+    "noResults": function() {
+      return "Ничего не найдено";
+    }
+  }
+});
+
+$('.current-user--top i').on('click', function() {
+  var self;
+  self = $('.current-user--top');
+  return self.toggleClass('active');
+});
+
+$('.add-to-culture').on('click', function(e) {
+  var $cancel, $form, $inputToAdd, $inputsToSaveAndCancel, $self;
+  $self = $(this);
+  $inputToAdd = $self.siblings('.input-for-select-2');
+  $inputsToSaveAndCancel = $self.siblings('.save-or-cancel');
+  $cancel = $self.siblings('.cancel');
+  $form = $('#addCultures');
+  $form.attr('method', 'POST');
+  $inputToAdd.show(300);
+  $self.hide(400, function() {
+    return $inputsToSaveAndCancel.show();
+  });
+  $inputToAdd.focus();
+  $cancel.on('click', function(e) {
+    $form.attr('method', 'GET');
+    $inputToAdd.hide(300, function() {
+      $inputsToSaveAndCancel.hide();
+      return $self.show();
+    });
+    return e.preventDefault();
+  });
+  return e.preventDefault();
+});
+
+$('.add-cultures--form .select2-special').on('select2:select', function(e) {
+  return $('form').submit();
 });

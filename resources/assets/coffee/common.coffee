@@ -1,4 +1,5 @@
 #=require datatable/datatable.coffee
+#=require magnific/confirm.coffee
 
 $('.select2-special').select2
   "language":
@@ -8,21 +9,31 @@ $('.current-user--top i').on 'click', ->
   self = $('.current-user--top')
   self.toggleClass('active')
 
-$('.popup-modal').magnificPopup
-  type: 'inline'
-  preloader: false
-  modal: true
-  callbacks:
-    open: ()->
-
-      $content = this.currItem.el[0]
-      removeLink = $content.getAttribute('data-remove')
-      $('#remove').on 'click', ->
-          window.location = removeLink
 
 
 
+$('.add-to-culture').on 'click', (e)->
+  $self = $(this)
+  $inputToAdd = $self.siblings('.input-for-select-2')
+  $inputsToSaveAndCancel = $self.siblings('.save-or-cancel')
+  $cancel = $self.siblings('.cancel')
+  $form = $('#addCultures');
 
-$(document).on "click", ".popup-modal-dismiss", (e)->
+
+  $form.attr('method', 'POST')
+
+  $inputToAdd.show(300)
+  $self.hide 400, ->
+    $inputsToSaveAndCancel.show()
+  $inputToAdd.focus()
+
+  $cancel.on 'click', (e)->
+    $form.attr('method', 'GET')
+    $inputToAdd.hide 300, ->
+      $inputsToSaveAndCancel.hide()
+      $self.show()
+    e.preventDefault()
   e.preventDefault()
-  $.magnificPopup.close()
+
+$('.add-cultures--form .select2-special').on 'select2:select', (e)->
+  $('form').submit()

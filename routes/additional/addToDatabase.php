@@ -2,10 +2,16 @@
 
 /*Add culture*/
 
-Route::get('/addCulture/{culture_name}', [
+Route::post('/addCulture', [
     'uses' => 'CultureController@addCulture',
         'as' => 'addCulture'
 ]
+)->middleware('auth');
+
+Route::get('/addCulture', [
+        'uses' => 'CultureController@getCulture',
+        'as' => 'addCulture'
+    ]
 )->middleware('auth');
 
 /*Remove culture*/

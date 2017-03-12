@@ -55,7 +55,7 @@ Route::get('/logout', [
 
 
 Route::get('/cultures', [
-        'uses'       => 'CultureController@view',
+        'uses'       => 'CultureController@getCultures',
         'as'         => 'cultures',
         'middleware' => 'auth'
     ]
