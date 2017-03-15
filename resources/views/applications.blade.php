@@ -73,7 +73,7 @@
 
     <div class="material--wrapper">
         <div class="content--heading">
-            <h4>Текущие заявки:</h4>
+            <h4>Склад:</h4>
         </div>
 
         <div class="active-users--table">

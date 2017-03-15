@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Sort;
 use Illuminate\Http\Request;
 use App\Culture;
 
@@ -25,20 +26,44 @@ class CultureController extends Controller
 
 
 
+        if( ! empty( $request['sort']) )
+        {
+            $this->validate($request,[
+                'sort' => 'required'
+            ]);
+
+
+            $sort = new Sort();
+
+            $sort->sort_name =      $request['sort'];
+            $sort->culture_id =     $request['select-culture-name'];
+            $sort->save();
+
+            return redirect()->back();
+        }
+
+
+
+
+
 
     }
 
+    //Get cultures according GET request
 
     public function getCulture(Request $request) {
 
         if( ! empty( $request['select-culture-name']) )
         {
-
+            $culture_id = $request[ 'select-culture-name' ];
             $cultures = Culture::all();
+            $sort = Sort::all();
 
+            $sorts = $sort->where( 'culture_id', $culture_id)->all();
 
-            return view('cultures', [
-                'cultures' => $cultures
+            return view( 'cultures', [
+                'cultures' => $cultures,
+                'sorts'    => $sorts
             ]);
         }
 

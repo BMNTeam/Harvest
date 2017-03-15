@@ -10,4 +10,10 @@ class Culture extends Model
 
        $this->belongsTo('App\Order');
    }
+
+   public function sorts()
+   {
+       $this->hasMany('App\Sort');
+
+   }
 }

@@ -15,8 +15,8 @@ class CustomersController extends Controller
 
         $customer = new Customer();
 
-        $customer->name = $request['input-user-name'];
-        $customer->contacts = $request['input-user-contacts'];
+        $customer->name =       $request['input-user-name'];
+        $customer->contacts =   $request['input-user-contacts'];
         $customer->save();
 
         return redirect()->back();
