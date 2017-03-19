@@ -22,7 +22,7 @@ Route::get('/', [
 );
 
 Route::get('/applications', [
-        'uses'       => 'OrdersController@getOrders',
+        'uses'       => 'StockController@getStocks',
         'as'         => 'applications',
         'middleware' => 'auth'
     ]
@@ -67,6 +67,15 @@ Route::post('/login', [
         'as' => 'login'
     ]
 );
+
+Route::get('/test', [
+        'uses'       => 'CultureController@test',
+        'as'         => 'test',
+        'middleware' => 'auth'
+    ]
+);
+
+
 
 /*Turned off routes*/
 //Auth::routes();

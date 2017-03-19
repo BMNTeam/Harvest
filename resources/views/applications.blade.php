@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="material--wrapper">
+    {{--<div class="material--wrapper">
         <div class="content--heading">
             <h4>Добавить заявку:</h4>
         </div>
@@ -68,7 +68,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div>--}}
 
 
     <div class="material--wrapper">
@@ -90,31 +90,22 @@
 
                 </tr>
                 </thead>
+
+
                 <tbody>
+
+              @foreach($stocks as $stock)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <th scope="row">{{ $stock->id }}</th>
+                    <td>{{ $stock->sort_name }}</td>
+                    <td>{{ $stock->sort_id }}</td>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>Mark</td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                </tr>
+
+                @endforeach
+
                 </tbody>
             </table>
 

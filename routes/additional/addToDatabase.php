@@ -14,6 +14,15 @@ Route::get('/addCulture', [
     ]
 )->middleware('auth');
 
+
+/*Add element to stock */
+Route::post('/addToStock', [
+        'uses' => 'CultureController@addElementToStock',
+        'as' => 'addToStock',
+        'middleware' => 'auth'
+    ]
+);
+
 /*Remove culture*/
 Route::get('/removeCulture/{culture_name}', [
         'uses' => 'CultureController@removeCulture',

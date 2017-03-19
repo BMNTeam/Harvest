@@ -8,7 +8,7 @@ class Culture extends Model
 {
    public function orders(){
 
-       $this->belongsTo('App\Order');
+       $this->belongsTo('App\Stock');
    }
 
    public function sorts()

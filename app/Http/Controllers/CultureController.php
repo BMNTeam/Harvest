@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Reproduction;
 use App\Sort;
+use App\Stock;
 use Illuminate\Http\Request;
 use App\Culture;
 
@@ -10,7 +12,7 @@ class CultureController extends Controller
 {
     public function addCulture(Request $request) {
 
-        if( ! empty( $request['culture']) )
+        if( ! empty( $request['culture']) && ! isset( $request['create-element-in-stock']) )
         {
             $this->validate($request,[
                 'culture' => 'required'
@@ -26,7 +28,7 @@ class CultureController extends Controller
 
 
 
-        if( ! empty( $request['sort']) )
+        if( ! empty( $request['sort']) && empty($request['reproduction'])  )
         {
             $this->validate($request,[
                 'sort' => 'required'
@@ -45,15 +47,13 @@ class CultureController extends Controller
 
 
 
-
-
     }
 
     //Get cultures according GET request
 
     public function getCulture(Request $request) {
 
-        if( ! empty( $request['select-culture-name']) )
+        if( ! empty( $request['select-culture-name']) && empty( $request['select-sort-name']) )
         {
             $culture_id = $request[ 'select-culture-name' ];
             $cultures = Culture::all();
@@ -67,8 +67,20 @@ class CultureController extends Controller
             ]);
         }
 
+        if( ! empty( $request['select-sort-name']) )
+        {
+            $sort_id = $request[ 'select-sort-name' ];
+            $cultures  = Culture::all();
+            $sorts = Sort::all()->where('culture_id', $request['select-culture-name']);
+            $reproductions = Reproduction::all();
 
 
+            return view( 'cultures', [
+                'cultures' => $cultures,
+                'sorts'    => $sorts,
+                'reproductions' => $reproductions
+            ]);
+        }
 
 
     }
@@ -91,7 +103,28 @@ class CultureController extends Controller
         ]);
     }
 
-    public function postCultures(Request $request){
+    public function addElementToStock (Request $request)
+    {
+        /*var_dump(intval( $request['select-culture-name']) );
+        return;*/
+
+            $stock = new Stock();
+
+            $stock->reproduction_id = intval($request['reproduction']);
+            $stock->sort_id = intval($request['select-sort-name']);
+            $stock->culture_id = intval($request['select-culture-name']);
+            $stock->vall = 0;
+            $stock->corns= 0;
+
+            $stock->save();
+
+            return redirect()->route('applications');
 
     }
+
+    public function test(){
+
+    }
+
+
 }

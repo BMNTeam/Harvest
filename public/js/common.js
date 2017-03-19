@@ -78,3 +78,12 @@ $('.add-to-culture').on('click', function(e) {
 $('.add-cultures--form .select2-special').on('select2:select', function(e) {
   return $('form').submit();
 });
+
+$('.add-sort--button').click(function(e) {
+  var $self;
+  $self = $(this);
+  e.preventDefault();
+  $('form').attr('method', 'POST');
+  $('form').attr('action', $self.attr('data-url-to-post'));
+  return $('form').submit();
+});

@@ -35,5 +35,14 @@ $('.add-to-culture').on 'click', (e)->
     e.preventDefault()
   e.preventDefault()
 
+#SELECT 2 TRIGGER EVENT ON CLICK
 $('.add-cultures--form .select2-special').on 'select2:select', (e)->
   $('form').submit()
+
+$('.add-sort--button').click (e)->
+  $self = $(this);
+  e.preventDefault();
+  $('form').attr('method', 'POST')
+  $('form').attr('action', $self.attr('data-url-to-post'))
+  $('form').submit()
+

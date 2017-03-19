@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sort extends Model
 {
-    public function culture()
+    public function sorts ()
     {
-        $this->belongsTo('App\Culture');
+        return $this->belongsTo('App\Stock', 'id');
     }
 }

@@ -58,6 +58,10 @@
 
                                         @foreach($sorts as $sort)
                                             <option
+                                                    @if( \Request::input('select-sort-name') == $sort->id))
+                                                            selected
+                                                    @endif
+
 
                                                     value="{{ $sort->id }}">{{ $sort->sort_name }}</option>
                                         @endforeach
@@ -83,6 +87,36 @@
                         </div>
 
                     </div> {{--End Sorts--}}
+                    @endif
+
+
+
+                    @if(  isset ($reproductions))
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="select-sort-name">Репродукция</label>
+                                <div class="form-group">
+                                    @foreach( $reproductions as $reproduction)
+                                        <input class="reproduction_radio" type="radio" name="reproduction"  value="{{ $reproduction->id }}"> {{ $reproduction->reproduction_name }}
+                                   @endforeach
+                                </div>
+                            </div>
+
+
+
+
+                        </div> {{--End Reproductions--}}
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit"  value="create-element-in-stock" name="create-element-in-stock" data-url-to-post="{{ Route('addToStock') }}" class="action--button add-sort--button">Добавить сорт</button>
+                            </div>
+
+
+
+
+                        </div> {{--End Reproductions--}}
                     @endif
 
                 </div>
