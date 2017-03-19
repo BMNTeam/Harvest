@@ -8,12 +8,12 @@ class Culture extends Model
 {
    public function orders(){
 
-       $this->belongsTo('App\Stock');
+       return $this->belongsTo('App\Stock', 'id');
    }
 
    public function sorts()
    {
-       $this->hasMany('App\Sort');
+        $this->hasMany('App\Sort');
 
    }
 }

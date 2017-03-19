@@ -8,6 +8,6 @@ class Reproduction extends Model
 {
     public function sort()
     {
-        $this->belongsTo('App\Stock');
+        return $this->belongsTo('App\Stock', 'id');
     }
 }

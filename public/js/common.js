@@ -32,6 +32,37 @@ $('.popup-modal').magnificPopup({
   }
 });
 
+$('.popup-change-modal').magnificPopup({
+  type: 'inline',
+  preloader: false,
+  modal: true,
+  callbacks: {
+    open: function() {
+      var $content, $form, $parentTr, corns, cultureName, orderId, removeLink, reproductionName, sortName, vall;
+      $content = this.currItem.el[0];
+      $parentTr = $($content).parents('tr');
+      $form = $('#changeContent');
+      orderId = $parentTr.find('.stock-id').text();
+      cultureName = $parentTr.find('.culture-name').text();
+      sortName = $parentTr.find('.sort-name').text();
+      reproductionName = $parentTr.find('.reproduction-name');
+      vall = $parentTr.find('.vall').text();
+      corns = $parentTr.find('.corns').text();
+      $form.find('#stock_id').val(orderId);
+      $form.find('#change_culture_name').val(cultureName);
+      $form.find('#change_sort_name').val(sortName);
+      $form.find('#change_reproduction_name').val(reproductionName);
+      $form.find('#change_vall').val(vall);
+      $form.find('#change_corns').val(corns);
+      console.dir(orderId);
+      removeLink = $content.getAttribute('data-remove');
+      return $('#remove').on('click', function() {
+        return window.location = removeLink;
+      });
+    }
+  }
+});
+
 $(document).on("click", ".popup-modal-dismiss", function(e) {
   e.preventDefault();
   return $.magnificPopup.close();

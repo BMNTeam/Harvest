@@ -87,6 +87,7 @@
                     <th>Репродукция</th>
                     <th>Валл</th>
                     <th>Семена</th>
+                    <th class="text-center">Операции</th>
 
                 </tr>
                 </thead>
@@ -96,12 +97,16 @@
 
               @foreach($stocks as $stock)
                 <tr>
-                    <th scope="row">{{ $stock->id }}</th>
-                    <td>{{ $stock->sort_name }}</td>
-                    <td>{{ $stock->sort_id }}</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
+                    <th scope="row" class="stock-id">{{ $stock->id }}</th>
+                    <td class="culture-name">{{ $stock->cultures['culture_name']}}</td>
+                    <td class="sort-name">{{ $stock->sorts->sort_name  }}</td>
+                    <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>
+                    <td class="vall">{{ $stock->vall }}</td>
+                    <td class="corns">{{ $stock->corns }}</td>
+                    <td class="text-center">
+                        <a class="remove popup-change-modal" href="#changeContent"><i class="fa fa-pencil-square-o" aria-hidden="true">Редактировать</i></a>
+                        <a class="remove popup-modal" data-remove="{{ route('removeFromStock', $stock->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
+                    </td>
                 </tr>
 
                 @endforeach
@@ -111,4 +116,6 @@
 
         </div>
     </div>
+    @include('includes/pop-up-message')
+    @include('includes/pop-up-change-value')
 @endsection

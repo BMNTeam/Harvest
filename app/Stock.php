@@ -9,14 +9,14 @@ class Stock extends Model
     public $table = "stock";
 
     public function sorts(){
-        return $this->hasOne('App\Sort', 'id');
+        return $this->hasOne('App\Sort', 'id', 'sort_id');
     }
 
-    public function reproduction() {
-        $this->hasOne('App\Reproduction');
+    public function reproductions() {
+       return $this->hasOne('App\Reproduction', 'id', 'reproduction_id');
     }
 
-    public function culture() {
-        $this->hasOne('App\Culture');
+    public function cultures() {
+        return $this->hasOne('App\Culture', 'id', 'culture_id');
     }
 }
