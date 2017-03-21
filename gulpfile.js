@@ -1,4 +1,4 @@
-var gulp           = require('gulp'),
+var 	gulp           = require('gulp'),
 		gutil          = require('gulp-util' ),
 		sass           = require('gulp-sass'),
 		browserSync    = require('browser-sync'),
@@ -72,7 +72,7 @@ gulp.task('watch', ['sass', 'scripts', 'browser-sync'], function() {
 	gulp.watch('resources/assets/custom_sass/*.sass', ['sass']);
 	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
 	gulp.watch('app/*.html', browserSync.reload);
-	gulp.watch(['resources/assets/coffee/*.coffee'], ['coffee']);
+	gulp.watch(['resources/assets/coffee/**/*.coffee'], ['coffee']);
 	gulp.watch(['app/**/*.php', 'routes/*.php', 'resources/**/*.php'], browserSync.reload);
 });
 

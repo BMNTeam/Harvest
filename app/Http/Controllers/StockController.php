@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class StockController extends Controller
 {
-   public function getStocks(){
+   public function getStocks()
+   {
         $stocks = Stock::all();
 
        return view('applications',[
@@ -18,7 +19,9 @@ class StockController extends Controller
 
    }
 
-   public function removeStockElement( $stock_id ){
+
+   public function removeStockElement( $stock_id )
+   {
        if( ! empty($stock_id)) {
            $stock_element_to_remove = Stock::where('id', $stock_id);
            $stock_element_to_remove->delete();
@@ -27,6 +30,22 @@ class StockController extends Controller
        }else{
            return redirect()->back();
        }
+   }
+
+   public function editStockElement (Request $request)
+   {
+
+        $id   = $request['stock_id'];
+        $vall = $request['change_vall'];
+        $corn = $request['change_corns'];
+
+        $stock = Stock::find($id);
+        $stock->vall = $vall;
+        $stock->corns = $corn;
+
+        $stock->save();
+
+        return redirect()->back();
    }
 
 

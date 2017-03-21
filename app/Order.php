@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function culture() {
+    public $table = 'order';
 
-        $this->hasOne('App\Culture');
-    }
+
+
 }

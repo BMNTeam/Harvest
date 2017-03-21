@@ -19,6 +19,7 @@ $('.popup-change-modal').magnificPopup
       $content = this.currItem.el[0]
       $parentTr = $($content).parents('tr')
       $form = $('#changeContent')
+
       # Variables to install
       orderId = $parentTr.find('.stock-id').text()
       cultureName = $parentTr.find('.culture-name').text()
@@ -35,11 +36,10 @@ $('.popup-change-modal').magnificPopup
       $form.find('#change_vall').val(vall)
       $form.find('#change_corns').val(corns)
 
-
-      console.dir(orderId)
       removeLink = $content.getAttribute('data-remove')
       $('#remove').on 'click', ->
-        window.location = removeLink
+        $.validate()
+        $form.find('form').submit()
 
 
 $(document).on "click", ".popup-modal-dismiss", (e)->

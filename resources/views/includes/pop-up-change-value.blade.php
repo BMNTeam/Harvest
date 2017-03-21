@@ -2,27 +2,27 @@
     <div class="">
         <div class="pop-up--wrapper">
            <h3>Редактирование склада:</h3> <br><br>
-            <form action="" method="post">
-                {{ csrf_field() }}
+            <form action="{{ route('editStockElement') }}" method="post">
 
+                {{ csrf_field() }}
                 <div class="form-group">
                     <label for="stock_id">Номер заявки</label>
-                    <input class="form-control" type="text" name="stock_id" id="stock_id" value="1" disabled >
+                    <input  class="form-control" type="text" name="stock_id" id="stock_id" value="4" readonly="readonly" >
 
                 </div>
 
                 <div class="form-group">
                     <label for="change_culture_name">Название культуры</label>
-                    <input class="form-control" type="text" name="change_culture_name" id="change_culture_name" value="1" disabled >
+                    <input class="form-control" type="text" name="change_culture_name" id="change_culture_name" value="1" readonly="readonly" >
                 </div>
 
                 <div class="form-group">
                     <label for="change_sort_name">Название сорта</label>
-                    <input class="form-control" type="text" name="change_sort_name" id="change_sort_name" value="1" disabled >
+                    <input class="form-control" type="text" name="change_sort_name" id="change_sort_name" value="1" readonly="readonly" >
                 </div>
 
                 <div class="form-group">
-                    <label for="change_vall">Валл</label>
+                    <label for="change_vall" data-validation="number" >Валл</label>
                     <input class="form-control" type="text" name="change_vall" id="change_vall" value="1" >
                 </div>
 
@@ -33,7 +33,7 @@
             </form>
 
             <div class="buttons--wrapper text-center">
-                <button id="remove"class="action--button hidden-form-button remove"><i class="fa fa-thumbs-up"> Сохраниь</i></button>
+                <button id="remove"class="action--button hidden-form-button"><i class="fa fa-thumbs-up"> Сохраниь</i></button>
                 <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-thumbs-down"> Отменить</i></button>
             </div>
 

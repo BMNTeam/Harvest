@@ -54,10 +54,10 @@ $('.popup-change-modal').magnificPopup({
       $form.find('#change_reproduction_name').val(reproductionName);
       $form.find('#change_vall').val(vall);
       $form.find('#change_corns').val(corns);
-      console.dir(orderId);
       removeLink = $content.getAttribute('data-remove');
       return $('#remove').on('click', function() {
-        return window.location = removeLink;
+        $.validate();
+        return $form.find('form').submit();
       });
     }
   }
@@ -67,6 +67,8 @@ $(document).on("click", ".popup-modal-dismiss", function(e) {
   e.preventDefault();
   return $.magnificPopup.close();
 });
+
+$.validate();
 
 $('.select2-special').select2({
   "language": {

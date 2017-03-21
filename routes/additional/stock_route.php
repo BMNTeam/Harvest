@@ -14,3 +14,11 @@ Route::get('/removeFromStock/{sock_id}', [
         'middleware' => 'auth'
     ]
 );
+
+Route::post('/editStockElement', [
+        'uses' => 'StockController@editStockElement',
+        'as' => 'editStockElement',
+        'middleware' => 'auth'
+    ]
+);
+

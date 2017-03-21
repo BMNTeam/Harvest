@@ -1,5 +1,6 @@
 #=require datatable/datatable.coffee
 #=require magnific/confirm.coffee
+#=require validation/validator.coffee
 
 $('.select2-special').select2
   "language":
@@ -8,8 +9,6 @@ $('.select2-special').select2
 $('.current-user--top i').on 'click', ->
   self = $('.current-user--top')
   self.toggleClass('active')
-
-
 
 
 $('.add-to-culture').on 'click', (e)->

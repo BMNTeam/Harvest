@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Culture;
+use App\Order;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
 {
-   public function getOrders(){
-       $cultures = Culture::all();
+    public function getAllElementsInOrders ()
+    {
+        Order::all();
 
-       return view('applications',[
-            'cultures' => $cultures
-       ]);
-   }
-
-
+        return view('orders');
+    }
 }

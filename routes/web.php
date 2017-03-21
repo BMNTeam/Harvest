@@ -75,6 +75,13 @@ Route::get('/test', [
     ]
 );
 
+Route::get('/orders',[
+    'uses'          => 'OrdersController@getAllElementsInOrders',
+    'as'            => 'orders',
+    'middleware'    => 'auth'
+    ]
+);
+
 
 
 /*Turned off routes*/
