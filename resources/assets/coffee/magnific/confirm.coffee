@@ -16,25 +16,20 @@ $('.popup-change-modal').magnificPopup
   modal: true
   callbacks:
     open: ()->
+      RowRecord = new Object
       $content = this.currItem.el[0]
       $parentTr = $($content).parents('tr')
       $form = $('#changeContent')
 
-      # Variables to install
-      orderId = $parentTr.find('.stock-id').text()
-      cultureName = $parentTr.find('.culture-name').text()
-      sortName = $parentTr.find('.sort-name').text()
-      reproductionName = $parentTr.find('.reproduction-name');
-      vall = $parentTr.find('.vall').text()
-      corns = $parentTr.find('.corns').text()
+      RowRecord = getClickedRowValues($parentTr)
 
       #setVariables
-      $form.find('#stock_id').val(orderId);
-      $form.find('#change_culture_name').val(cultureName)
-      $form.find('#change_sort_name').val(sortName)
-      $form.find('#change_reproduction_name').val(reproductionName)
-      $form.find('#change_vall').val(vall)
-      $form.find('#change_corns').val(corns)
+      $form.find('.stock_id').val(RowRecord.orderId);
+      $form.find('.change_culture_name').val(RowRecord.cultureName)
+      $form.find('.change_sort_name').val(RowRecord.sortName)
+      $form.find('.change_reproduction_name').val(RowRecord.reproductionName)
+      $form.find('.change_vall').val(RowRecord.vall)
+      $form.find('.change_corns').val(RowRecord.corns)
 
       removeLink = $content.getAttribute('data-remove')
       $('#remove').on 'click', ->
@@ -45,4 +40,41 @@ $('.popup-change-modal').magnificPopup
 $(document).on "click", ".popup-modal-dismiss", (e)->
   e.preventDefault()
   $.magnificPopup.close()
+
+$('.popup-add-to-stock-modal').magnificPopup
+  type: 'inline'
+  preloader: false
+  modal: true
+  callbacks:
+    open: ()->
+      RowRecord = new Object
+      $content = this.currItem.el[0]
+      $parentTr = $($content).parents('tr')
+      $form = $('#addOrder').find('form')
+      RowRecord = getClickedRowValues($parentTr)
+
+      #setVariables
+      $form.find('.stock_id').val(RowRecord.orderId);
+      $form.find('.change_culture_name').val(RowRecord.cultureName)
+      $form.find('.change_sort_name').val(RowRecord.sortName)
+      $form.find('.change_reproduction_name').val(RowRecord.reproductionName)
+      $form.find('.change_corns').text(RowRecord.corns)
+
+
+
+
+
+
+
+getClickedRowValues = ($parentTr) ->
+  RowRecord = new Object
+
+  RowRecord.orderId = $parentTr.find('.stock-id').text()
+  RowRecord.cultureName = $parentTr.find('.culture-name').text()
+  RowRecord.sortName = $parentTr.find('.sort-name').text()
+  RowRecord.reproductionName = $parentTr.find('.reproduction-name');
+  RowRecord.vall = $parentTr.find('.vall').text()
+  RowRecord.corns = $parentTr.find('.corns').text()
+
+  return RowRecord
 

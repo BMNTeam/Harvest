@@ -37,7 +37,6 @@
                                 <div class="adding-elements--wrapper">
                                     <div class="form-group">
 
-
                                         <input name="culture"  class="input-for-select-2" type="text"placeholder="например: зерно">
                                         <button class="action--button add-to-culture">+ Добавить</button>
                                         <button type="submit" class="action--button save-or-cancel submit"><i class="fa fa-floppy-o"></i></button>

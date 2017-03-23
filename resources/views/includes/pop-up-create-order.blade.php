@@ -1,11 +1,14 @@
-<div id="changeContent" class="mfp-hide white-popup-block">
+<div id="addOrder" class="mfp-hide white-popup-block">
     <div class="">
         <div class="pop-up--wrapper">
-           <h3>Редактирование склада:</h3> <br><br>
-            <form action="{{ route('editStockElement') }}" method="post">
+            <h3>Добивить заявку: </h3> <br><br>
+            <form action="" method="post">
 
                 {{ csrf_field() }}
-                <div class="form-group">
+
+
+
+                <div class="form-group hidden">
                     <label for="stock_id">Номер заявки</label>
                     <input  class="form-control stock_id" type="text" name="stock_id" id="stock_id" value="4" readonly="readonly" >
 
@@ -22,18 +25,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="change_vall" data-validation="number" >Валл</label>
-                    <input class="form-control change_vall" type="text" name="change_vall" id="change_vall" value="1" >
+                    <label for="select-customer-name">Покупатель</label>
+                    <select class="form-control select2-special" name="select-customer-name" id="select-customer-name" style="width: 100%">
+                        @foreach($customers as $customer)
+                            <option value="{{ $customer->id }}"> {{ $customer->name }} | {{ $customer->contacts }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
+
                 <div class="form-group">
-                    <label for="change_corns">Семена</label>
-                    <input class="form-control change_corns" type="text" name="change_corns" id="change_corns" value="1"  >
+                    <label for="amount_of_corns">Колличество | <i>Максимум: <span class="change_corns"></span></i> </label>
+                    <input class="form-control " type="text" name="amount_of_corns" id="amount_of_corns" value=""  >
                 </div>
             </form>
 
             <div class="buttons--wrapper text-center">
-                <button id="remove"class="action--button hidden-form-button"><i class="fa fa-thumbs-up"> Сохраниь</i></button>
+                <button id="remove"class="action--button hidden-form-button"><i class="fa fa-thumbs-up"> Добавить заявку</i></button>
                 <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-thumbs-down"> Отменить</i></button>
             </div>
 
