@@ -96,7 +96,7 @@
                                 <label for="select-sort-name">Репродукция</label>
                                 <div class="form-group">
                                     @foreach( $reproductions as $reproduction)
-                                        <input class="reproduction_radio" type="radio" name="reproduction"  value="{{ $reproduction->id }}"> {{ $reproduction->reproduction_name }}
+                                        <input checked class="reproduction_radio" type="radio" name="reproduction"  value="{{ $reproduction->id }}"> {{ $reproduction->reproduction_name }}
                                    @endforeach
                                 </div>
                             </div>

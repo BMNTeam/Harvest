@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Home
+    Склад
 @endsection
 
 @section('content')
@@ -81,7 +81,7 @@
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Номер</th>
+                    <th class="hidden">Номер</th>
                     <th>Культура</th>
                     <th>Сорт</th>
                     <th>Репродукция</th>
@@ -97,14 +97,14 @@
 
               @foreach($stocks as $stock)
                 <tr>
-                    <th scope="row" class="stock-id">{{ $stock->id }}</th>
+                    <th scope="row" class="stock-id hidden">{{ $stock->id }}</th>
                     <td class="culture-name">{{ $stock->cultures['culture_name']}}</td>
                     <td class="sort-name">{{ $stock->sorts->sort_name  }}</td>
                     <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>
                     <td class="vall">{{ $stock->vall }}</td>
                     <td class="corns">{{ $stock->corns }}</td>
                     <td class="text-center">
-                        <a class="remove popup-add-to-stock-modal" href="#addOrder"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                        <a class="remove popup-add-to-stock-modal" href="#addOrder"><i aria-hidden="true">Добавить заявку</i></a> |
                         <a class="remove popup-change-modal" href="#changeContent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                         <a class="remove popup-modal" data-remove="{{ route('removeFromStock', $stock->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
                     </td>
@@ -117,7 +117,7 @@
 
         </div>
     </div>
-    @include('includes/pop-up-message')
-    @include('includes/pop-up-change-value')
-    @include('includes/pop-up-create-order')
+    @include('includes.pop-ups.pop-up-message')
+    @include('includes.pop-ups.pop-up-change-value')
+    @include('includes.pop-ups.pop-up-create-order')
 @endsection

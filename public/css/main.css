@@ -222,3 +222,14 @@ a.remove {
   margin-left: 25px !important; }
   .reproduction_radio:first-child {
     margin-left: 5px !important; }
+
+textarea.contacts {
+  width: 100%;
+  padding: 4px 7px; }
+
+i.fa.fa-pencil-square-o::before {
+  -webkit-transform: translateY(1px);
+      -ms-transform: translateY(1px);
+          transform: translateY(1px);
+  padding-right: 7px;
+  display: inline-block; }

@@ -5,7 +5,7 @@
             <form action="{{ route('editStockElement') }}" method="post">
 
                 {{ csrf_field() }}
-                <div class="form-group">
+                <div class="form-group hidden">
                     <label for="stock_id">Номер заявки</label>
                     <input  class="form-control stock_id" type="text" name="stock_id" id="stock_id" value="4" readonly="readonly" >
 

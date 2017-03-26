@@ -17,10 +17,11 @@ class Orders extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('stock_id')->unsigned();
-            $table->string('ordered');
-            $table->string('amount_of_done');
-            $table->boolean('done');
+            $table->integer('customer_id')->unsigned();
+            $table->float('amount_of_done');
+            $table->string('status');
 
+            $table -> foreign('customer_id')->references('id')->on('customers');
             $table -> foreign('stock_id')->references('id')->on('stock');
 
 

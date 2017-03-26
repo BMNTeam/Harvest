@@ -14,3 +14,10 @@ Route::get('/removeCustomer/{customer_id}', [
     'middleware' => 'auth'
     ]
 );
+
+Route::post('/updateCustomer', [
+        'uses' => 'CustomersController@updateCustomer',
+        'as' => 'updateCustomer',
+        'middleware' => 'auth'
+    ]
+);
