@@ -31,6 +31,15 @@ Route::post('/finish_order',[
     ]
 );
 
+Route::get('/update_order/{id}',[
+        'uses'          => 'OrdersController@updateOrder',
+        'as'            => 'updateOrder',
+        'middleware'    => 'auth'
+    ]
+);
+
+
+
 
 
 

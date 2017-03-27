@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Stock;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrdersController extends Controller
@@ -12,10 +13,28 @@ class OrdersController extends Controller
     {
         $orders = Order::all();
 
+        //Check if order exist without action more that 10 days
+        foreach( $orders as $order)
+        {
+            //Get order updated date and current date
+            $order_updated_date = Carbon::parse($order->updated_at);
+            $time_now     = Carbon::now();
+
+            //If pass more than 10 days change order status to
+            //out of service
+            if( $order->status !== 'Завершена' &&
+                $order_updated_date->diffInDays( $time_now) >= 10 )
+            {
+                $order->status = 'Просрочена';
+            }
+        }
+
         return view('orders',[
             'orders' => $orders
         ]);
     }
+
+
 
     public function createElementInOrder(Request $request)
     {
@@ -90,5 +109,15 @@ class OrdersController extends Controller
             ->back()
             ->withMessage(['success_msg' => 'Заявка успешно выполена']);
 
+    }
+
+
+    public function updateOrder ($id)
+    {
+        $order = Order::findOrFail(['id' => $id ])->first();
+        $order->updated_at = Carbon::now();
+        $order->save();
+
+        return redirect()->back();
     }
 }

@@ -40,11 +40,14 @@
                         <td>{{ $order->status }}</td>
                         <td class="text-center">
 
-                            @if( $order->status !== 'Завершена')
+                            @if( $order->status !== 'Завершена' && $order->status !== 'Просрочена')
                                 <a href="#finishOrder" class="remove popup-modal pop-up-finish-order"><i>Завершить</i></a> |
                             @endif
-
+                                @if( $order->status === 'Просрочена')
+                                    <a href="{{ route('updateOrder', ['id' => $order->id]) }}" class="remove"><i>Продлить</i></a> |
+                                @endif
                             <a class="remove popup-modal" data-remove="{{ route('remove_order', $order->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
+
                         </td>
 
                     </tr>

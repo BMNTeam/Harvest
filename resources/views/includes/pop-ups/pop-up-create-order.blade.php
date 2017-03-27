@@ -43,8 +43,8 @@
                 </div>
 
                 <div class="buttons--wrapper text-center">
-                    <button type="submit" id=""class="action--button "><i class="fa fa-thumbs-up"> Добавить заявку</i></button>
-                    <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-thumbs-down"> Отменить</i></button>
+                    <button type="submit" id=""class="action--button "><i class="fa "> Добавить заявку</i></button>
+                    <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-ban"> Отменить</i></button>
                 </div>
 
             </form>
