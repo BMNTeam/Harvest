@@ -14,7 +14,7 @@
 
         <div class="active-users--table">
 
-            <table class="table table-hover">
+            <table class="table table-hover orders-table">
                 <thead>
                 <tr>
                     <th class="hidden">Номер</th>
@@ -24,6 +24,7 @@
                     <th>Семена</th>
                     <th>Покупатель</th>
                     <th>Статус</th>
+                    <th class="hidden">Статус-id</th>
                     <th class="text-center">Операции</th>
 
                 </tr>
@@ -38,6 +39,22 @@
                         <td class="corns">{{ $order->amount_of_done }}</td>
                         <td class="customer_name">{{ $order->customer->name }}</td>
                         <td>{{ $order->status }}</td>
+                        <td class="hidden">
+                           <?php
+                                switch ( $order->status )
+                                {
+                                    case "Активная":
+                                        echo(0);
+                                        break;
+                                    case "Просрочена":
+                                        echo(1);
+                                        break;
+                                    case "Завершена":
+                                        echo(2);
+                                        break;
+                                }
+                            ?>
+                        </td>
                         <td class="text-center">
 
                             @if( $order->status !== 'Завершена' && $order->status !== 'Просрочена')

@@ -33,6 +33,7 @@
                 <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-ban"> Отменить</i></button>
             </div>
 
+            </form>
 
         </div>
 

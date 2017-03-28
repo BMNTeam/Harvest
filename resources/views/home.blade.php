@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Home
+    Склад
 @endsection
 
 @section('content')
@@ -67,7 +67,7 @@
 
         <div class="active-users--table">
 
-            <table class="table table-hover">
+            <table class="table table-hover datatables-init">
                 <thead>
                 <tr>
                     <th class="hidden">#</th>
