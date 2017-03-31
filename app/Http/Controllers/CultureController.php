@@ -34,7 +34,6 @@ class CultureController extends Controller
                 'sort' => 'required'
             ]);
 
-
             $sort = new Sort();
 
             $sort->sort_name =      $request['sort'];
@@ -43,9 +42,6 @@ class CultureController extends Controller
 
             return redirect()->back();
         }
-
-
-
 
     }
 
@@ -69,10 +65,19 @@ class CultureController extends Controller
 
         if( ! empty( $request['select-sort-name']) )
         {
+            $default_reproduction_name = 'ЭС';
             $sort_id = $request[ 'select-sort-name' ];
             $cultures  = Culture::all();
             $sorts = Sort::all()->where('culture_id', $request['select-culture-name']);
             $reproductions = Reproduction::all();
+
+            foreach ($reproductions as $reproduction){
+                if( $reproduction->reproduction_name === $default_reproduction_name){
+                    $reproduction->checked_by_default = true;
+                }else{
+                    $reproduction->checked_by_default = false;
+                }
+            }
 
 
             return view( 'cultures', [
@@ -105,8 +110,6 @@ class CultureController extends Controller
 
     public function addElementToStock (Request $request)
     {
-        /*var_dump(intval( $request['select-culture-name']) );
-        return;*/
 
             $stock = new Stock();
 

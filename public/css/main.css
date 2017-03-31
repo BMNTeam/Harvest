@@ -233,3 +233,7 @@ i.fa.fa-pencil-square-o::before {
           transform: translateY(1px);
   padding-right: 7px;
   display: inline-block; }
+
+.tooltip-on-hover {
+  text-decoration: underline;
+  cursor: pointer; }

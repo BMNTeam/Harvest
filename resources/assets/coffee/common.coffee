@@ -18,7 +18,6 @@ $('.add-to-culture').on 'click', (e)->
   $cancel = $self.siblings('.cancel')
   $form = $('#addCultures');
 
-
   $form.attr('method', 'POST')
 
   $inputToAdd.show(300)
@@ -35,7 +34,7 @@ $('.add-to-culture').on 'click', (e)->
   e.preventDefault()
 
 #SELECT 2 TRIGGER EVENT ON CLICK
-$('.add-cultures--form .select2-special').on 'select2:select', (e)->
+$('.add-cultures--form .select2-special').on 'select2:close', (e)->
   $('form').submit()
 
 $('.add-sort--button').click (e)->
@@ -45,3 +44,5 @@ $('.add-sort--button').click (e)->
   $('form').attr('action', $self.attr('data-url-to-post'))
   $('form').submit()
 
+# Tooltip init
+$('[data-toggle="tooltip"]').tooltip();

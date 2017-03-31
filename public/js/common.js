@@ -1,40 +1,28 @@
-var getClickedRowValues;
+var getClickedRowValues, translation;
+
+translation = {
+  "search": "Поиск:",
+  "info": "Показаны  результаты от _START_ до _END_ из _TOTAL_",
+  "infoEmpty": "Ничего не найдено",
+  "emptyTable": "Нет доступных данных",
+  "lengthMenu": "Показать _MENU_ на странице",
+  "paginate": {
+    "first": "Первая",
+    "last": "Последняя",
+    "next": "Вперед",
+    "previous": "Назад"
+  },
+  "zeroRecords": "К сожалению мы ничего не нашли",
+  "infoFiltered": "(Поиск произведен по _MAX_ записям)"
+};
 
 $('.datatables-init').DataTable({
-  'language': {
-    "search": "Поиск:",
-    "info": "Показаны  результаты от _START_ до _END_ из _TOTAL_",
-    "infoEmpty": "Ничего не найдено",
-    "emptyTable": "Нет доступных данных",
-    "lengthMenu": "Показать _MENU_ на странице",
-    "paginate": {
-      "first": "Первая",
-      "last": "Последняя",
-      "next": "Вперед",
-      "previous": "Назад"
-    },
-    "zeroRecords": "К сожалению мы ничего не нашли",
-    "infoFiltered": "(Поиск произведен по _MAX_ записям)"
-  }
+  'language': translation
 });
 
 $('.orders-table').DataTable({
   "order": [[7, 'asc']],
-  'language': {
-    "search": "Поиск:",
-    "info": "Показаны  результаты от _START_ до _END_ из _TOTAL_",
-    "infoEmpty": "Ничего не найдено",
-    "emptyTable": "Нет доступных данных",
-    "lengthMenu": "Показать _MENU_ на странице",
-    "paginate": {
-      "first": "Первая",
-      "last": "Последняя",
-      "next": "Вперед",
-      "previous": "Назад"
-    },
-    "zeroRecords": "К сожалению мы ничего не нашли",
-    "infoFiltered": "(Поиск произведен по _MAX_ записям)"
-  }
+  'language': translation
 });
 
 $('.popup-modal').magnificPopup({
@@ -210,7 +198,7 @@ $('.add-to-culture').on('click', function(e) {
   return e.preventDefault();
 });
 
-$('.add-cultures--form .select2-special').on('select2:select', function(e) {
+$('.add-cultures--form .select2-special').on('select2:close', function(e) {
   return $('form').submit();
 });
 
@@ -222,3 +210,5 @@ $('.add-sort--button').click(function(e) {
   $('form').attr('action', $self.attr('data-url-to-post'));
   return $('form').submit();
 });
+
+$('[data-toggle="tooltip"]').tooltip();

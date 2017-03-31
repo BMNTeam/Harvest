@@ -27,6 +27,20 @@ class OrdersController extends Controller
             {
                 $order->status = 'Просрочена';
             }
+
+            //Add attribute to Order object for sort on the front end
+            switch ( $order->status )
+            {
+                case "Активная":
+                    $order->order = 1;
+                    break;
+                case "Просрочена":
+                    $order->order = 0;
+                    break;
+                case "Завершена":
+                    $order->order = 2;
+                    break;
+            }
         }
 
         return view('orders',[

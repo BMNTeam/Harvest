@@ -21,7 +21,7 @@
                     <th>Культура</th>
                     <th>Сорт</th>
                     <th>Репродукция</th>
-                    <th>Семена</th>
+                    <th>Семена ц.</th>
                     <th>Покупатель</th>
                     <th>Статус</th>
                     <th class="hidden">Статус-id</th>
@@ -37,34 +37,19 @@
                         <td class="sort-name">{{ $order->stock->sorts->sort_name }}</td>
                         <td class="reproduction-name">{{ $order->stock->reproductions->reproduction_name }}</td>
                         <td class="corns">{{ $order->amount_of_done }}</td>
-                        <td class="customer_name">{{ $order->customer->name }}</td>
+                        <td class="customer_name"><span class="tooltip-on-hover" data-toggle="tooltip" title="{{$order->customer->contacts}}">{{ $order->customer->name }}</span></td>
                         <td>{{ $order->status }}</td>
-                        <td class="hidden">
-                           <?php
-                                switch ( $order->status )
-                                {
-                                    case "Активная":
-                                        echo(0);
-                                        break;
-                                    case "Просрочена":
-                                        echo(1);
-                                        break;
-                                    case "Завершена":
-                                        echo(2);
-                                        break;
-                                }
-                            ?>
-                        </td>
+                        <td class="hidden">{{ $order->order }}</td>
                         <td class="text-center">
-
                             @if( $order->status !== 'Завершена' && $order->status !== 'Просрочена')
-                                <a href="#finishOrder" class="remove popup-modal pop-up-finish-order"><i>Завершить</i></a> |
+                                <a href="#finishOrder"
+                                   class="remove popup-modal pop-up-finish-order"><i>Завершить</i></a> |
                             @endif
-                                @if( $order->status === 'Просрочена')
-                                    <a href="{{ route('updateOrder', ['id' => $order->id]) }}" class="remove"><i>Продлить</i></a> |
-                                @endif
+                            @if( $order->status === 'Просрочена')
+                                <a href="{{ route('updateOrder', ['id' => $order->id]) }}"
+                                   class="remove"><i>Продлить</i></a> |
+                            @endif
                             <a class="remove popup-modal" data-remove="{{ route('remove_order', $order->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
-
                         </td>
 
                     </tr>

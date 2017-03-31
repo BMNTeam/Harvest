@@ -96,7 +96,11 @@
                                 <label for="select-sort-name">Репродукция</label>
                                 <div class="form-group">
                                     @foreach( $reproductions as $reproduction)
-                                        <input checked class="reproduction_radio" type="radio" name="reproduction"  value="{{ $reproduction->id }}"> {{ $reproduction->reproduction_name }}
+                                        <input
+                                                @if( $reproduction->checked_by_default === true)
+                                                        checked
+                                                @endif
+                                                class="reproduction_radio" type="radio" name="reproduction"  value="{{ $reproduction->id }}"> {{ $reproduction->reproduction_name }}
                                    @endforeach
                                 </div>
                             </div>
@@ -109,7 +113,7 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <button type="submit"  value="create-element-in-stock" name="create-element-in-stock" data-url-to-post="{{ Route('addToStock') }}" class="action--button add-sort--button">Добавить сорт</button>
+                                <button type="submit"  value="create-element-in-stock" name="create-element-in-stock" data-url-to-post="{{ Route('addToStock') }}" class="action--button add-sort--button">Добавить на склад</button>
                             </div>
 
 
