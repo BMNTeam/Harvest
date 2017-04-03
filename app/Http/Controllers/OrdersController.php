@@ -22,23 +22,27 @@ class OrdersController extends Controller
 
             //If pass more than 10 days change order status to
             //out of service
-            if( $order->status !== 'Завершена' &&
+            if( $order->status !== 'Выполнена' &&
                 $order_updated_date->diffInDays( $time_now) >= 10 )
             {
                 $order->status = 'Просрочена';
             }
 
-            //Add attribute to Order object for sort on the front end
+            // Add attribute to Order object for SORT on the front end
+            // also added css classes
             switch ( $order->status )
             {
                 case "Активная":
                     $order->order = 1;
+                    $order->css_class = 'active-table';
                     break;
                 case "Просрочена":
                     $order->order = 0;
+                    $order->css_class = 'overdue-table';
                     break;
-                case "Завершена":
+                case "Выполнена":
                     $order->order = 2;
+                    $order->css_class = 'success-table';
                     break;
             }
         }
@@ -96,7 +100,7 @@ class OrdersController extends Controller
 
         //Change current order
         $order_element          = Order::findOrFail(['id' => $order_id])->first();
-        $order_element->status  = 'Завершена';
+        $order_element->status  = 'Выполнена';
         $order_element->amount_of_done = $amount_of_corns;
 
 

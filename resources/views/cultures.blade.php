@@ -12,6 +12,18 @@
             <h4>Панель администратора культур:</h4>
         </div>
 
+        {{--Errors section--}}
+        @if( count($errors) > 0 )
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach( $errors->all() as $error)
+                        <li> {{ $error}}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        {{--End Errors section--}}
+
         <div class="add-cultures--form">
             <form id="addCultures" action="{{ route('addCulture') }}" method="GET" class="add">
                 {{ csrf_field() }}
@@ -124,6 +136,7 @@
 
                 </div>
             </form>
+
         </div>
     </div>
 

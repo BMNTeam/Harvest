@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                 @foreach($orders as $order)
-                    <tr>
+                    <tr class="{{ $order->css_class }}">
                         <td class="stock-id hidden">{{ $order->id }}</td>
                         <td class="culture-name">{{ $order->stock->cultures->culture_name }}</td>
                         <td class="sort-name">{{ $order->stock->sorts->sort_name }}</td>
@@ -41,7 +41,7 @@
                         <td>{{ $order->status }}</td>
                         <td class="hidden">{{ $order->order }}</td>
                         <td class="text-center">
-                            @if( $order->status !== 'Завершена' && $order->status !== 'Просрочена')
+                            @if( $order->status !== 'Выполнена' && $order->status !== 'Просрочена')
                                 <a href="#finishOrder"
                                    class="remove popup-modal pop-up-finish-order"><i>Завершить</i></a> |
                             @endif

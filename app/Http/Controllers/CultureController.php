@@ -110,7 +110,7 @@ class CultureController extends Controller
 
     public function addElementToStock (Request $request)
     {
-
+            $stocks = Stock::where(  'reproduction_id', $request['reproduction'])->first();
             $stock = new Stock();
 
             $stock->reproduction_id = intval($request['reproduction']);
@@ -119,9 +119,14 @@ class CultureController extends Controller
             $stock->vall = 0;
             $stock->corns= 0;
 
-            $stock->save();
+            if($stock !== null ) {
+                return redirect()->back()->withErrors(['msg' => 'Данная репродукция есть на складе']);
+            }else {
+                $stock->save();
+                return redirect()->route('applications');
+            }
 
-            return redirect()->route('applications');
+
 
     }
 

@@ -23,18 +23,22 @@ class StockController extends Controller
         {
             $all_orders_with_this_stock_element = $orders->where(  'stock_id', $stock->id )->all();
 
-            //If it has orders then calculate number of each element in orders
+            //If this element has order than calculate this
             if ($all_orders_with_this_stock_element != NULL ){
+
                 foreach ($all_orders_with_this_stock_element as $order_in_stock){
-                    $stock -> orders_number += 1;
-                    $stock -> deletable = false;
+                    if($order_in_stock -> status == 'Выполнена') {
+                        $stock -> all_orders += $order_in_stock -> amount_of_done;
+                        $stock -> deletable = false;
+                    }
                 }
-            }else{
-                $stock->orders_number = 0;
-                $stock->deletable = true;
+
+            } else{
+                $stock -> all_orders = 0;
+                $stock -> deletable = true;
             }
 
-        }
+        };
 
        return view('applications',[
            'stocks' => $stocks,

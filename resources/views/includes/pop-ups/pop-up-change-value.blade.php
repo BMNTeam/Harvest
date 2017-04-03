@@ -22,12 +22,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="change_vall" data-validation="number" >Валл</label>
+                    <label for="change_vall" data-validation="number" >Валл ц.</label>
                     <input class="form-control change_vall" type="text" name="change_vall" id="change_vall" value="1" >
                 </div>
 
                 <div class="form-group">
-                    <label for="change_corns">Семена</label>
+                    <label for="change_corns">Семена ц.</label>
                     <input class="form-control change_corns" type="text" name="change_corns" id="change_corns" value="1"  >
                 </div>
             </form>
