@@ -33,7 +33,6 @@ $('.popup-change-modal').magnificPopup
 
       removeLink = $content.getAttribute('data-remove')
       $('#remove').on 'click', ->
-        $.validate()
         $form.find('form').submit()
 
 
@@ -62,6 +61,7 @@ $('.popup-add-to-stock-modal').magnificPopup
       $form.find('.change_sort_name').val(RowRecord.sortName)
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName)
       $form.find('.change_corns').text(RowRecord.corns)
+      $form.find('.bmn-add-to-stock').attr('data-validation-allowing', "range[1;#{RowRecord.corns}]")
 
 
 # Finish order function
@@ -84,7 +84,7 @@ $('.pop-up-finish-order').magnificPopup
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName)
       $form.find('.change_corns').text(RowRecord.corns)
       $form.find('.change_customer_name').val(RowRecord.customer)
-      $form.find('.change_corns_number').focus().select()
+      $form.find('.change_corns_number').val(RowRecord.corns)
 
 
 

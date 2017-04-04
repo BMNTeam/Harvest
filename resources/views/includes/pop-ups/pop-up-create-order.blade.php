@@ -39,7 +39,9 @@
 
                 <div class="form-group">
                     <label for="amount_of_corns">Количество | <i>Максимум: <span class="change_corns"></span></i> </label>
-                    <input required class="form-control " type="text" name="amount_of_corns" id="amount_of_corns" value=""  >
+                    <input required class="form-control bmn-add-to-stock" type="text" name="amount_of_corns" id="amount_of_corns"
+                           data-validation="number" data-validation-allowing="range[1;100]"
+                           value=""  >
                 </div>
 
                 <div class="buttons--wrapper text-center">

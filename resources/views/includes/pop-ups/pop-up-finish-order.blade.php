@@ -2,7 +2,7 @@
     <div class="">
         <div class="pop-up--wrapper">
             <h3>Завершить заявку: </h3> <br><br>
-            <form action="{{ route('finishOrder') }}" method="post">
+            <form action="{{ route('finishOrder') }}" method="post" name="createOrder">
 
                 {{ csrf_field() }}
 
@@ -35,7 +35,7 @@
 
                 <div class="form-group">
                     <label for="amount_of_corns">Количество | <i>Максимум: <span class="change_corns"></span></i> </label>
-                    <input required class="form-control change_corns_number" type="text" name="amount_of_corns" id="amount_of_corns" value=""  >
+                    <input required class="form-control change_corns_number" type="text" name="amount_of_corns" id="amount_of_corns"  data-validation="number" data-validation-allowing="float" value=""  >
                 </div>
 
                 <div class="buttons--wrapper text-center">

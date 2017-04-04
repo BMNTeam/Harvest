@@ -116,8 +116,8 @@ class CultureController extends Controller
             $stock->reproduction_id = intval($request['reproduction']);
             $stock->sort_id = intval($request['select-sort-name']);
             $stock->culture_id = intval($request['select-culture-name']);
-            $stock->vall = 0;
-            $stock->corns= 0;
+            $stock->vall  = 0;
+            $stock->corns = 0;
 
             if($stock !== null ) {
                 return redirect()->back()->withErrors(['msg' => 'Данная репродукция есть на складе']);

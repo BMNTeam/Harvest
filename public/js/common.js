@@ -1,4 +1,4 @@
-var getClickedRowValues, translation;
+var getClickedRowValues, languageRu, translation;
 
 translation = {
   "search": "Поиск:",
@@ -61,7 +61,6 @@ $('.popup-change-modal').magnificPopup({
       $form.find('.change_corns').val(RowRecord.corns);
       removeLink = $content.getAttribute('data-remove');
       return $('#remove').on('click', function() {
-        $.validate();
         return $form.find('form').submit();
       });
     }
@@ -89,7 +88,8 @@ $('.popup-add-to-stock-modal').magnificPopup({
       $form.find('.change_culture_name').val(RowRecord.cultureName);
       $form.find('.change_sort_name').val(RowRecord.sortName);
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName);
-      return $form.find('.change_corns').text(RowRecord.corns);
+      $form.find('.change_corns').text(RowRecord.corns);
+      return $form.find('.bmn-add-to-stock').attr('data-validation-allowing', "range[1;" + RowRecord.corns + "]");
     }
   }
 });
@@ -112,7 +112,7 @@ $('.pop-up-finish-order').magnificPopup({
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName);
       $form.find('.change_corns').text(RowRecord.corns);
       $form.find('.change_customer_name').val(RowRecord.customer);
-      return $form.find('.change_corns_number').focus().select();
+      return $form.find('.change_corns_number').val(RowRecord.corns);
     }
   }
 });
@@ -158,7 +158,56 @@ getClickedRowValues = function($parentTr) {
   return RowRecord;
 };
 
-$.validate();
+languageRu = {
+  errorTitle: 'Ошибка отправки формы!',
+  requiredField: 'Это обязательное поле',
+  requiredFields: 'Вы задали не все обязательные поля',
+  badTime: 'Вы задали некорректное время',
+  badEmail: 'Вы задали некорректный e-mail',
+  badTelephone: 'Вы задали некорректный номер телефона',
+  badSecurityAnswer: 'Вы задали некорректный ответ на секретный вопрос',
+  badDate: 'Вы задали некорректную дату',
+  lengthBadStart: 'Значение должно быть в диапазоне',
+  lengthBadEnd: ' символов',
+  lengthTooLongStart: 'Значение длинее, чем ',
+  lengthTooShortStart: 'Значение меньше, чем ',
+  notConfirmed: 'Введённые значения не могут быть подтверждены',
+  badDomain: 'Некорректное значение домена',
+  badUrl: 'Некорретный URL',
+  badCustomVal: 'Введённое значение неверно',
+  andSpaces: ' и пробелы ',
+  badInt: 'Значение - не число или превышен максимум',
+  badSecurityNumber: 'Введённый защитный номер - неправильный',
+  badUKVatAnswer: 'Некорректный UK VAT номер',
+  badStrength: 'Пароль не достаточно надёжен',
+  badNumberOfSelectedOptionsStart: 'Вы должны выбрать как минимум ',
+  badNumberOfSelectedOptionsEnd: ' ответов',
+  badAlphaNumeric: 'Значение должно содержать только числа и буквы ',
+  badAlphaNumericExtra: ' и ',
+  wrongFileSize: 'Загружаемый файл слишком велик (максимальный размер %s)',
+  wrongFileType: 'Принимаются файлы следующих типов %s',
+  groupCheckedRangeStart: 'Выберите между ',
+  groupCheckedTooFewStart: 'Выберите как минимум ',
+  groupCheckedTooManyStart: 'Выберите максимум из ',
+  groupCheckedEnd: ' элемент(ов)',
+  badCreditCard: 'Номер кредитной карты некорректен',
+  badCVV: 'CVV номер некорректно',
+  wrongFileDim: 'Неверные размеры графического файла,',
+  imageTooTall: 'изображение не может быть уже чем',
+  imageTooWide: 'изображение не может быть шире чем',
+  imageTooSmall: 'изображение слишком мало',
+  min: 'минимум',
+  max: 'максимум',
+  imageRatioNotAccepted: 'Изображение с таким соотношением сторон не принимается',
+  badBrazilTelephoneAnswer: 'Введённый номер телефона неправильный',
+  badBrazilCEPAnswer: 'CEP неправильный',
+  badBrazilCPFAnswer: 'CPF неправильный'
+};
+
+$.validate({
+  decimalSeparator: '.',
+  language: languageRu
+});
 
 $('.select2-special').select2({
   "language": {
