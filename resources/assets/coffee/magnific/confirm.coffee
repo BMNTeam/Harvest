@@ -82,10 +82,10 @@ $('.pop-up-finish-order').magnificPopup
       $form.find('.change_culture_name').val(RowRecord.cultureName)
       $form.find('.change_sort_name').val(RowRecord.sortName)
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName)
-      $form.find('.change_corns').text(RowRecord.corns)
+      $form.find('.change_corns').text(RowRecord.maximumInStock)
       $form.find('.change_customer_name').val(RowRecord.customer)
       $form.find('.change_corns_number').val(RowRecord.corns)
-
+      $form.find('.change_corns_number').attr('data-validation-allowing', "range[1;#{RowRecord.maximumInStock}, float]")
 
 
 
@@ -137,6 +137,7 @@ getClickedRowValues = ($parentTr) ->
   RowRecord.vall = $parentTr.find('.vall').text()
   RowRecord.corns = $parentTr.find('.corns').text()
   RowRecord.customer = $parentTr.find('.customer_name').text()
+  RowRecord.maximumInStock = $parentTr.find('.stock-id').attr('data-corns-in-stock')
 
   return RowRecord
 

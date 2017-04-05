@@ -110,9 +110,10 @@ $('.pop-up-finish-order').magnificPopup({
       $form.find('.change_culture_name').val(RowRecord.cultureName);
       $form.find('.change_sort_name').val(RowRecord.sortName);
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName);
-      $form.find('.change_corns').text(RowRecord.corns);
+      $form.find('.change_corns').text(RowRecord.maximumInStock);
       $form.find('.change_customer_name').val(RowRecord.customer);
-      return $form.find('.change_corns_number').val(RowRecord.corns);
+      $form.find('.change_corns_number').val(RowRecord.corns);
+      return $form.find('.change_corns_number').attr('data-validation-allowing', "range[1;" + RowRecord.maximumInStock + ", float]");
     }
   }
 });
@@ -155,6 +156,7 @@ getClickedRowValues = function($parentTr) {
   RowRecord.vall = $parentTr.find('.vall').text();
   RowRecord.corns = $parentTr.find('.corns').text();
   RowRecord.customer = $parentTr.find('.customer_name').text();
+  RowRecord.maximumInStock = $parentTr.find('.stock-id').attr('data-corns-in-stock');
   return RowRecord;
 };
 
@@ -205,8 +207,15 @@ languageRu = {
 };
 
 $.validate({
-  decimalSeparator: '.',
-  language: languageRu
+  decimalSeparator: ',',
+  language: languageRu,
+  onElementValidate: (function(_this) {
+    return function(valid, $el, $form, errorMess) {
+      var currentValue;
+      console.dir(valid);
+      return currentValue = console.dir($el);
+    };
+  })(this)
 });
 
 $('.select2-special').select2({

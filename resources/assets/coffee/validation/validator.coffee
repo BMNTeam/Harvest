@@ -45,5 +45,10 @@ languageRu =
 
 
 $.validate
-  decimalSeparator : '.'
+  decimalSeparator : ','
   language : languageRu
+  onElementValidate: (valid, $el, $form, errorMess)=>
+    console.dir(valid)
+    currentValue = console.dir($el)
+    #changeDecimalSeparator = currentValue.replace(',', '.')
+

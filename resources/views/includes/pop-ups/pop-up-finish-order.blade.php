@@ -35,11 +35,12 @@
 
                 <div class="form-group">
                     <label for="amount_of_corns">Количество | <i>Максимум: <span class="change_corns"></span></i> </label>
-                    <input required class="form-control change_corns_number" type="text" name="amount_of_corns" id="amount_of_corns"  data-validation="number" data-validation-allowing="float" value=""  >
+                    <input required class="form-control change_corns_number" type="text" name="amount_of_corns" id="amount_of_corns"
+                           data-validation="number" data-validation-allowing="range[1;100]" value=""  >
                 </div>
 
                 <div class="buttons--wrapper text-center">
-                    <button type="submit" id=""class="action--button "><i class="fa "> Завершить заявку</i></button>
+                    <button type="submit" id=""class="action--button bmn-add-finish-order"><i class="fa"> Завершить заявку</i></button>
                     <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-ban"> Отменить</i></button>
                 </div>
 
