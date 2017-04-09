@@ -17,15 +17,11 @@ class InStocks extends Migration
         {
             $table -> increments('id');
             $table -> timestamps();
-            $table -> integer('sort_id')->unsigned();
-            $table -> integer('reproduction_id')->unsigned();
-            $table -> integer('culture_id')->unsigned();
+
             $table -> string('vall');
             $table -> string('corns');
 
-            $table -> foreign('sort_id')->references('id')->on('sorts');
-            $table -> foreign('reproduction_id')->references('id')->on('reproductions');
-            $table -> foreign('culture_id')-> references('id')->on('cultures');
+
         });
     }
 

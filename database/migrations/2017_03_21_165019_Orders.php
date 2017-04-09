@@ -16,13 +16,10 @@ class Orders extends Migration
         Schema::create('order', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->integer('stock_id')->unsigned();
-            $table->integer('customer_id')->unsigned();
+
             $table->float('amount_of_done');
             $table->string('status');
 
-            $table -> foreign('customer_id')->references('id')->on('customers');
-            $table -> foreign('stock_id')->references('id')->on('stock');
 
 
         });

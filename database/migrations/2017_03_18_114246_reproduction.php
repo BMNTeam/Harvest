@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReproductionTable extends Migration
+class Reproduction extends Migration
 {
     /**
      * Run the migrations.
