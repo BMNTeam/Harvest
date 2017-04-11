@@ -12,6 +12,7 @@ class CultureController extends Controller
 {
     public function addCulture(Request $request) {
 
+        //Add culture
         if( ! empty( $request['culture']) && ! isset( $request['create-element-in-stock']) )
         {
             $this->validate($request,[
@@ -27,7 +28,7 @@ class CultureController extends Controller
 
 
 
-
+        //Add reproduction
         if( ! empty( $request['sort']) && empty($request['reproduction'])  )
         {
             $this->validate($request,[
@@ -46,7 +47,6 @@ class CultureController extends Controller
     }
 
     //Get cultures according GET request
-
     public function getCulture(Request $request) {
 
         if (empty( $request['select-culture-name']))
