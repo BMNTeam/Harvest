@@ -49,6 +49,11 @@ class CultureController extends Controller
 
     public function getCulture(Request $request) {
 
+        if (empty( $request['select-culture-name']))
+        {
+            return redirect()->back();
+        }
+
         if( ! empty( $request['select-culture-name']) && empty( $request['select-sort-name']) )
         {
             $culture_id = $request[ 'select-culture-name' ];
@@ -119,7 +124,7 @@ class CultureController extends Controller
             $stock->vall  = 0;
             $stock->corns = 0;
 
-            if($stock !== null ) {
+            if($stocks !== null ) {
                 return redirect()->back()->withErrors(['msg' => 'Данная репродукция есть на складе']);
             }else {
                 $stock->save();
