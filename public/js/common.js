@@ -207,7 +207,7 @@ languageRu = {
 };
 
 $.validate({
-  decimalSeparator: ',',
+  decimalSeparator: '.',
   language: languageRu,
   onElementValidate: (function(_this) {
     return function(valid, $el, $form, errorMess) {
