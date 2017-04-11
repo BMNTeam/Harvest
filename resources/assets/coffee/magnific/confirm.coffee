@@ -61,7 +61,7 @@ $('.popup-add-to-stock-modal').magnificPopup
       $form.find('.change_sort_name').val(RowRecord.sortName)
       $form.find('.change_reproduction_name').val(RowRecord.reproductionName)
       $form.find('.change_corns').text(RowRecord.corns)
-      $form.find('.bmn-add-to-stock').attr('data-validation-allowing', "range[1;#{RowRecord.corns}]")
+      $form.find('.bmn-add-to-stock').attr('data-validation-allowing', "range[1;#{RowRecord.corns}, float]")
 
 
 # Finish order function

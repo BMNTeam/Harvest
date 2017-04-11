@@ -31,7 +31,7 @@
                 <tbody>
                   @foreach($stocks as $stock)
                     <tr>
-                        <th scope="row" class="stock-id hidden">{{ $stock->id }}</th>
+                        <th scope="row" class="stock-id hidden"> {{ $stock->id }} </th>
                         <td class="culture-name">{{ $stock->cultures['culture_name']}}</td>
                         <td class="sort-name">{{ $stock->sorts->sort_name  }}</td>
                         <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>

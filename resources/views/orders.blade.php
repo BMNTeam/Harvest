@@ -32,7 +32,7 @@
                 <tbody>
                 @foreach($orders as $order)
                     <tr class="{{ $order->css_class }}">
-                        <td class="stock-id hidden" data-corns-in-stock="{{ $order->stock->corns }}">{{ $order->id }} ></td>
+                        <td class="stock-id hidden" data-corns-in-stock="{{ $order->stock->corns }}">{{ $order->id }}</td>
                         <td class="culture-name">{{ $order->stock->cultures->culture_name }}</td>
                         <td class="sort-name">{{ $order->stock->sorts->sort_name }}</td>
                         <td class="reproduction-name">{{ $order->stock->reproductions->reproduction_name }}</td>

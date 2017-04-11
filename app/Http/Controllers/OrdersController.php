@@ -91,21 +91,22 @@ class OrdersController extends Controller
     {
         $this->validate($request, [
             'order_id'          =>          'required',
-            'amount_of_corns'   =>          'required|numeric',
+            'amount_of_corns'   =>          'required',
         ]);
+
+
 
         // Define variables
         $order_id           = $request['order_id'];
-        $amount_of_corns    = $request['amount_of_corns'];
+        $amount_of_corns    = floatval($request['amount_of_corns']);
 
         //Change current order
         $order_element          = Order::findOrFail(['id' => $order_id])->first();
         $order_element->status  = 'Выполнена';
         $order_element->amount_of_done = $amount_of_corns;
 
-
         //Change stock element
-        $stock_id               =   $order_element->stock_id;
+        $stock_id               = $order_element->stock_id;
         $stock_element          = Stock::findOrFail(['id' => $stock_id])->first();
         $current_corns          = $stock_element->corns;
         $stock_element->corns   = floatval($current_corns) - floatval($amount_of_corns);
