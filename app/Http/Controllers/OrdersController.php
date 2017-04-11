@@ -66,6 +66,7 @@ class OrdersController extends Controller
         $customer = $request['select-customer-name'];
         $amount   = $request['amount_of_corns'];
 
+
         $order = new Order();
 
         $order -> stock_id       = $stock_id;
