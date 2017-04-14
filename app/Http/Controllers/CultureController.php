@@ -29,7 +29,8 @@ class CultureController extends Controller
 
 
         //Add reproduction
-        if( ! empty( $request['sort']) && empty($request['reproduction'])  )
+        if( ! empty( $request['sort']) && empty($request['reproduction']) ||
+            ! empty( $request['sort']) && isset($request['reproduction']) )
         {
             $this->validate($request,[
                 'sort' => 'required'

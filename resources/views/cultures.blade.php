@@ -34,6 +34,7 @@
                             <div class="form-group">
                                 <label for="select-culture-name">Культура</label>
                                 <select class="form-control select2-special" name="select-culture-name" id="select-culture-name">
+                                    <option value="">Выберите культуру</option>
                                     @foreach($cultures as $culture)
                                         <option  @if( \Request::input('select-culture-name') == $culture->id)
                                                 selected
@@ -66,7 +67,7 @@
                             <div class="form-group">
                                 <label for="select-sort-name">Сорт</label>
                                 <select class="form-control select2-special" name="select-sort-name" id="select-sort-name">
-
+                                    <option value="">Выберите сорт</option>
                                         @foreach($sorts as $sort)
                                             <option
                                                     @if( \Request::input('select-sort-name') == $sort->id))
