@@ -12,6 +12,7 @@ class CultureController extends Controller
 {
     public function addCulture(Request $request) {
 
+        //Add culture
         if( ! empty( $request['culture']) && ! isset( $request['create-element-in-stock']) )
         {
             $this->validate($request,[
@@ -27,8 +28,9 @@ class CultureController extends Controller
 
 
 
-
-        if( ! empty( $request['sort']) && empty($request['reproduction'])  )
+        //Add reproduction
+        if( ! empty( $request['sort']) && empty($request['reproduction']) ||
+            ! empty( $request['sort']) && isset($request['reproduction']) )
         {
             $this->validate($request,[
                 'sort' => 'required'
@@ -46,7 +48,6 @@ class CultureController extends Controller
     }
 
     //Get cultures according GET request
-
     public function getCulture(Request $request) {
 
         if (empty( $request['select-culture-name']))
@@ -119,10 +120,10 @@ class CultureController extends Controller
             $stock = new Stock();
 
             $stock->reproduction_id = intval($request['reproduction']);
-            $stock->sort_id = intval($request['select-sort-name']);
-            $stock->culture_id = intval($request['select-culture-name']);
-            $stock->vall  = 0;
-            $stock->corns = 0;
+            $stock->sort_id         = intval($request['select-sort-name']);
+            $stock->culture_id      = intval($request['select-culture-name']);
+            $stock->vall            = floatval($request['input-vall-values']);
+            $stock->corns           = floatval($request['input-corn-values']);
 
             if($stocks !== null ) {
                 return redirect()->back()->withErrors(['msg' => 'Данная репродукция есть на складе']);

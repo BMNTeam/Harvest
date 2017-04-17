@@ -34,6 +34,7 @@
                             <div class="form-group">
                                 <label for="select-culture-name">Культура</label>
                                 <select class="form-control select2-special" name="select-culture-name" id="select-culture-name">
+                                    <option value="">Выберите культуру</option>
                                     @foreach($cultures as $culture)
                                         <option  @if( \Request::input('select-culture-name') == $culture->id)
                                                 selected
@@ -66,7 +67,7 @@
                             <div class="form-group">
                                 <label for="select-sort-name">Сорт</label>
                                 <select class="form-control select2-special" name="select-sort-name" id="select-sort-name">
-
+                                    <option value="">Выберите сорт</option>
                                         @foreach($sorts as $sort)
                                             <option
                                                     @if( \Request::input('select-sort-name') == $sort->id))
@@ -119,8 +120,27 @@
 
 
 
-
                         </div> {{--End Reproductions--}}
+
+
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <label for="input-vall-values">Валл (ц)</label>
+                                            <div class="form-group">
+                                                <input type="text" placeholder="0" data-validation="number" data-validation-allowing="float" name="input-vall-values" class="input-vall-values form-control" id="inputCornValues" data-validation-optional="true">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="input-corn-values">Семена (ц)</label>
+                                        <div class="form-group">
+                                            <input type="text" placeholder="0" data-validation="number" data-validation-allowing="float" name="input-corn-values" class="input-corn-values form-control" id="inputCornValues" data-validation-optional="true">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div> {{--End values and corns--}}
 
 
                         <div class="row">

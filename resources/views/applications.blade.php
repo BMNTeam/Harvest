@@ -20,9 +20,10 @@
                         <th>Культура</th>
                         <th>Сорт</th>
                         <th>Репродукция</th>
-                        <th>Валл ц.</th>
-                        <th>Семена ц.</th>
-                        <th>Заявки ц.</th>
+                        <th>Валл (ц)</th>
+                        <th>Семена (ц)</th>
+                        <th>Заявки (ц)</th>
+                        <th>Продано (ц)</th>
                         <th class="text-center">Операции</th>
 
                     </tr>
@@ -37,6 +38,7 @@
                         <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>
                         <td class="vall">{{ $stock->vall }}</td>
                         <td class="corns">{{ $stock->corns }}</td>
+                        <td class="created-orders">{{ $stock->active_orders }}</td>
                         <td>{{ $stock -> all_orders }}</td>
                         <td class="text-center">
                             <a class="remove popup-add-to-stock-modal" href="#addOrder"><i aria-hidden="true">Добавить заявку</i></a> |

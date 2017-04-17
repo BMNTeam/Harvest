@@ -17,7 +17,7 @@ class StockController extends Controller
         $customers = Customer::all();
         $orders = Order::all();
 
-        //Count number of orders for current sort
+        //Count number of orders for current sort for active and finished separately
         //Enable or disable remove ability
         foreach ($stocks as $stock)
         {
@@ -27,16 +27,29 @@ class StockController extends Controller
             if ($all_orders_with_this_stock_element != NULL ){
 
                 foreach ($all_orders_with_this_stock_element as $order_in_stock){
+                    //If order status is Finished than calculate finished orders
+
                     if($order_in_stock -> status == 'Выполнена') {
                         $stock -> all_orders += $order_in_stock -> amount_of_done;
                         $stock -> deletable = false;
+                    }else{
+                        $stock -> all_orders = 0;
+                    }
+                    //If order status is active that calculate Corns field
+                    if($order_in_stock -> status == 'Активная') {
+                        $stock -> active_orders += $order_in_stock -> amount_of_done;
+                        $stock -> deletable = false;
+                    }else{
+                        $stock -> active_orders = 0;
                     }
                 }
 
             } else{
-                $stock -> all_orders = 0;
+
+
                 $stock -> deletable = true;
             }
+
 
         };
 
