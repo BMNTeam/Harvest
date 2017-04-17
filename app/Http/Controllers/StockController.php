@@ -13,9 +13,9 @@ class StockController extends Controller
 {
    public function getStocks()
    {
-        $stocks = Stock::all();
-        $customers = Customer::all();
-        $orders = Order::all();
+        $stocks     = Stock::all();
+        $customers  = Customer::all();
+        $orders     = Order::all();
 
         //Count number of orders for current sort for active and finished separately
         //Enable or disable remove ability
@@ -26,10 +26,24 @@ class StockController extends Controller
             //If this element has order than calculate this
             if ($all_orders_with_this_stock_element != NULL ){
 
-                foreach ($all_orders_with_this_stock_element as $order_in_stock){
+                foreach ($all_orders_with_this_stock_element as $order_in_stock)
+                {
                     //If order status is Finished than calculate finished orders
-
-                    if($order_in_stock -> status == 'Выполнена') {
+                    switch ($order_in_stock -> status)
+                    {
+                        case 'Активная':
+                            $stock -> active_orders += $order_in_stock -> amount_of_done;
+                            $stock -> deletable = false;
+                            break;
+                        case 'Выполнена':
+                            $stock -> all_orders += $order_in_stock -> amount_of_done;
+                            $stock -> deletable = false;
+                            break;
+                        default:
+                            $stock -> all_orders = 0;
+                            $stock -> active_orders = 0;
+                    }
+                    /*if($order_in_stock -> status == 'Выполнена') {
                         $stock -> all_orders += $order_in_stock -> amount_of_done;
                         $stock -> deletable = false;
                     }else{
@@ -41,7 +55,7 @@ class StockController extends Controller
                         $stock -> deletable = false;
                     }else{
                         $stock -> active_orders = 0;
-                    }
+                    }*/
                 }
 
             } else{
@@ -54,8 +68,8 @@ class StockController extends Controller
         };
 
        return view('applications',[
-           'stocks' => $stocks,
-           'customers' => $customers
+           'stocks'     => $stocks,
+           'customers'  => $customers
        ]);
 
    }
