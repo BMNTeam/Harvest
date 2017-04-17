@@ -118,21 +118,21 @@ class CultureController extends Controller
     public function addElementToStock(Request $request)
     {
         $searchElementsWithSameReproduction = [
-            'reproduction_id' => $request['reproduction'],
-            'culture_id' => $request['select-culture-name'],
-            'sort_id' => $request['select-sort-name']
+            'reproduction_id'   => $request['reproduction'],
+            'culture_id'        => $request['select-culture-name'],
+            'sort_id'           => $request['select-sort-name']
         ];
         $stocks = Stock::where( $searchElementsWithSameReproduction )->first();
         $stock = new Stock();
 
-        $stock->reproduction_id = intval($request['reproduction']);
-        $stock->sort_id = intval($request['select-sort-name']);
-        $stock->culture_id = intval($request['select-culture-name']);
-        $stock->vall = floatval($request['input-vall-values']);
-        $stock->corns = floatval($request['input-corn-values']);
+        $stock->reproduction_id     = intval($request['reproduction']);
+        $stock->sort_id             = intval($request['select-sort-name']);
+        $stock->culture_id          = intval($request['select-culture-name']);
+        $stock->vall                = floatval($request['input-vall-values']);
+        $stock->corns               = floatval($request['input-corn-values']);
 
-        // If doesn't find the same culture with same reproduction then build
-        // it
+        // If doesn't find the same culture with same
+        // reproduction then build it
         if ($stocks !== null) {
             return redirect()->back()->withErrors(['msg' => 'Данная репродукция есть на складе']);
 
