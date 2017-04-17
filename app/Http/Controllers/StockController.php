@@ -43,6 +43,8 @@ class StockController extends Controller
                             $stock -> all_orders = 0;
                             $stock -> active_orders = 0;
                     }
+
+                    // Another way implemented zero values when nothing is ordered
                     /*if($order_in_stock -> status == 'Выполнена') {
                         $stock -> all_orders += $order_in_stock -> amount_of_done;
                         $stock -> deletable = false;
