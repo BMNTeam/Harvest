@@ -180,6 +180,10 @@ a {
     .active-users--table .table th {
       padding: 8px; }
 
+.vertical-separator {
+  font-size: 1.8em;
+  opacity: .3; }
+
 a.remove {
   -webkit-transition: all ease-in .3s;
   transition: all ease-in .3s;
@@ -187,6 +191,14 @@ a.remove {
   a.remove:hover, a.remove:active, a.remove:focus {
     color: red;
     outline: none; }
+
+.stock-table tbody tr td {
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  vertical-align: middle !important; }
+
+.stock-table .remove {
+  font-size: 1.8em; }
 
 .pop-up--wrapper {
   padding: 30px;
