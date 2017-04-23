@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="change_vall" data-validation="number" >Валл ц.</label>
+                    <label for="change_vall" data-validation="number" >Вал ц.</label>
                     <input class="form-control change_vall" type="text" data-validation-allowing="float" name="change_vall" id="change_vall" value="1" data-validation="number" >
                 </div>
 

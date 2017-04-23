@@ -141,3 +141,12 @@ getClickedRowValues = ($parentTr) ->
 
   return RowRecord
 
+
+# fix problems with select2 on the modal forms
+$.magnificPopup.instance._onFocusIn = (e) ->
+  # Do nothing if target element is select2 input
+  if $(e.target).hasClass('select2-search__field')
+    return true
+  # Else call parent method
+  $.magnificPopup.proto._onFocusIn.call this, e
+  return

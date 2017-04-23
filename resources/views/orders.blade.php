@@ -49,7 +49,9 @@
                                 <a href="{{ route('updateOrder', ['id' => $order->id]) }}"
                                    class="remove"><i>Продлить</i></a> |
                             @endif
-                            <a class="remove popup-modal" data-remove="{{ route('remove_order', $order->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
+                                @if( $order->status !== 'Выполнена')
+                                    <a class="remove popup-modal" data-remove="{{ route('remove_order', $order->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
+                                @endif
                         </td>
 
                     </tr>

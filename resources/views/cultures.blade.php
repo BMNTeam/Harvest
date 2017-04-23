@@ -22,8 +22,8 @@
                 </ul>
             </div>
         @endif
-        {{--End Errors section--}}
 
+        {{--End Errors section--}}
         <div class="add-cultures--form">
             <form id="addCultures" action="{{ route('addCulture') }}" method="GET" class="add">
                 {{ csrf_field() }}
@@ -37,14 +37,13 @@
                                     <option value="">Выберите культуру</option>
                                     @foreach($cultures as $culture)
                                         <option  @if( \Request::input('select-culture-name') == $culture->id)
-                                                selected
-                                                @endif
-                                                value="{{ $culture->id }}">{{ $culture->culture_name }}</option>
+                                                 selected
+                                                 @endif
+                                                 value="{{ $culture->id }}">{{ $culture->culture_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-
 
                         <div class="col-md-6">
                                 <div class="adding-elements--wrapper">
@@ -127,7 +126,7 @@
                                 <div class="col-md-6">
                                     <div class="col-md-6">
                                         <div class="row">
-                                            <label for="input-vall-values">Валл (ц)</label>
+                                            <label for="input-vall-values">Вал (ц)</label>
                                             <div class="form-group">
                                                 <input type="text" placeholder="0" data-validation="number" data-validation-allowing="float" name="input-vall-values" class="input-vall-values form-control" id="inputCornValues" data-validation-optional="true">
                                             </div>
