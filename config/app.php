@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        // FOR LARAVEL 5.1 AND ABOVE
+        BackupManager\Laravel\Laravel5ServiceProvider::class,
     ],
 
     /*
