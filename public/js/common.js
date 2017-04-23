@@ -160,6 +160,13 @@ getClickedRowValues = function($parentTr) {
   return RowRecord;
 };
 
+$.magnificPopup.instance._onFocusIn = function(e) {
+  if ($(e.target).hasClass('select2-search__field')) {
+    return true;
+  }
+  $.magnificPopup.proto._onFocusIn.call(this, e);
+};
+
 languageRu = {
   errorTitle: 'Ошибка отправки формы!',
   requiredField: 'Это обязательное поле',
@@ -178,7 +185,7 @@ languageRu = {
   badUrl: 'Некорретный URL',
   badCustomVal: 'Введённое значение неверно',
   andSpaces: ' и пробелы ',
-  badInt: 'Введите число и убедительсь что не превышен максимум. Например: <i>5.2</i>',
+  badInt: 'Введите число и убедитесь что не превышен максимум. Например: <i>5.2</i>',
   badSecurityNumber: 'Введённый защитный номер - неправильный',
   badUKVatAnswer: 'Некорректный UK VAT номер',
   badStrength: 'Пароль не достаточно надёжен',

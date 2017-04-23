@@ -20,7 +20,7 @@
                         <th>Культура</th>
                         <th>Сорт</th>
                         <th>Репродукция</th>
-                        <th>Валл (ц)</th>
+                        <th>Вал (ц)</th>
                         <th>Семена (ц)</th>
                         <th>Заявки (ц)</th>
                         <th>Продано (ц)</th>
@@ -32,7 +32,7 @@
                 <tbody>
                   @foreach($stocks as $stock)
                     <tr>
-                        <th scope="row" class="stock-id hidden"> {{ $stock->id }} </th>
+                        <td scope="row" class="stock-id hidden">{{ $stock->id }}</td>
                         <td class="culture-name">{{ $stock->cultures['culture_name']}}</td>
                         <td class="sort-name">{{ $stock->sorts->sort_name  }}</td>
                         <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>
@@ -44,7 +44,7 @@
                             <a class="remove popup-add-to-stock-modal" data-toggle="tooltip" title="Создать заявку" href="#addOrder"><i class="fa fa-truck" aria-hidden="true"></i></a> <span class="vertical-separator">|</span>
                             <a class="remove popup-change-modal" data-toggle="tooltip" title="Редактировать склад" href="#changeContent"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                             @if($stock->deletable)
-                                <a class="remove popup-modal" data-remove="{{ route('removeFromStock', $stock->id) }}" data-toggle="tooltip" title="Удалить со склада"  href="#showModal"><i class="fa fa-remove"></i></a>
+                                <a class="remove popup-modal " data-remove="{{ route('removeFromStock', $stock->id) }}" data-toggle="tooltip" title="Удалить со склада"  href="#showModal"><i class="fa fa-remove special-remove--icon"></i></a>
                             @else
                                 <a style="visibility: hidden"  href="#showModal"><i class="fa fa-remove"></i></a>
                             @endif
