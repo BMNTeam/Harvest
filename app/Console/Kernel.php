@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // example1 $schedule->command('inspire')
+        // example $schedule->command('inspire')
         //          ->hourly();
         $schedule->command('heroku pg:backups:capture --app harvest-sniish')
                      ->everyMinute();
