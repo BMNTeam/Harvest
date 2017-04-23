@@ -26,8 +26,6 @@ class Kernel extends ConsoleKernel
     {
         // example $schedule->command('inspire')
         //          ->hourly();
-        $schedule->command('heroku pg:backups:capture --app harvest-sniish')
-                     ->everyMinute();
     }
 
     /**
