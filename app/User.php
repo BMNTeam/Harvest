@@ -28,10 +28,10 @@ class User extends Authenticatable
     ];
 
     public function stock() {
-        return $this->hasOne('App\Stock', 'user_id', 'id');
+        return $this->hasMany('App\Stock', 'user_id', 'id');
     }
 
     public function order() {
-        return $this->hasOne('App\Order', 'user_id', 'id');
+        return $this->hasMany('App\Order', 'user_id', 'id');
     }
 }

@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Stock;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
     public function getAllElementsInOrders ()
     {
-        $orders = Order::all();
+        $user_id    = Auth::User()->id;
+        $user       = User::where('id', $user_id)->first();
+        $orders     = $user->order()->get();
 
         //Check if order exist without action more that 10 days
         foreach( $orders as $order)
@@ -66,7 +70,7 @@ class OrdersController extends Controller
         $stock_id = $request['stock_id'];
         $customer = $request['select-customer-name'];
         $amount   = $request['amount_of_corns'];
-
+        $user_id  = Auth::user()->id;
 
         $order = new Order();
 
@@ -74,6 +78,7 @@ class OrdersController extends Controller
         $order -> customer_id    = $customer;
         $order -> amount_of_done = $amount;
         $order -> status         = 'Активная';
+        $order -> user_id        = $user_id;
 
         $order-> save();
 

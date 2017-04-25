@@ -7,6 +7,7 @@ use App\Sort;
 use App\Stock;
 use Illuminate\Http\Request;
 use App\Culture;
+use Illuminate\Support\Facades\Auth;
 
 class CultureController extends Controller
 {
@@ -122,14 +123,17 @@ class CultureController extends Controller
             'culture_id'        => $request['select-culture-name'],
             'sort_id'           => $request['select-sort-name']
         ];
+
         $stocks = Stock::where( $searchElementsWithSameReproduction )->first();
         $stock = new Stock();
+        $user_id = Auth::User()->id;
 
         $stock->reproduction_id     = intval($request['reproduction']);
         $stock->sort_id             = intval($request['select-sort-name']);
         $stock->culture_id          = intval($request['select-culture-name']);
         $stock->vall                = floatval($request['input-vall-values']);
         $stock->corns               = floatval($request['input-corn-values']);
+        $stock->user_id             = $user_id;
 
         // If doesn't find the same culture with same
         // reproduction then build it
