@@ -22,8 +22,9 @@ class OrdersController extends Controller
 
             //If pass more than 10 days change order status to
             //out of service
+            //TODO change return different to 10 hours with function(diffInHours)
             if( $order->status !== 'Выполнена' &&
-                $order_updated_date->diffInDays( $time_now) >= 10 )
+                $order_updated_date->diffInMinutes( $time_now) >= 5 )
             {
                 $order->status = 'Просрочена';
             }
