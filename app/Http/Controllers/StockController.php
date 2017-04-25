@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Auth;
 
 class StockController extends Controller
 {
-   public function getStocks()
+   public function getStocks(Request $request)
    {
-       $user_id = Auth::User()->id;
+       $user_id    = Auth::User()->id;
        $user       = User::where('id', $user_id)->first();
        $stocks     = $user->stock()->get();
        $customers  = Customer::all();
@@ -73,10 +73,43 @@ class StockController extends Controller
 
         };
 
+       if ( ! empty($request['culture_to_search']) ) {
+           $culture_id      = $request['culture_to_search'];
+           $sort_id         = $request['sort_to_search'];
+           $reproduction_id = $request['reproduction_to_search'];
+
+           $search_conditions = [
+               'culture_id'      => $culture_id,
+               'sort_id'         => $sort_id,
+               'reproduction_id' => $reproduction_id
+           ];
+
+           $foreign_stocks = Stock::where($search_conditions)->where('corns', '!=', '0')->get();
+
+           if( $foreign_stocks->first() ){
+
+
+               return view('applications',[
+                   'stocks'     => $stocks,
+                   'customers'  => $customers,
+                   'foreign_stock' => $foreign_stocks,
+
+               ]);
+           }else{
+               return view('applications',[
+                   'stocks'     => $stocks,
+                   'customers'  => $customers,
+                   'error_not_found' => 'На других складах ничего не найдено'
+               ]);
+           }
+       }
+
        return view('applications',[
            'stocks'     => $stocks,
            'customers'  => $customers
        ]);
+
+
 
    }
 
