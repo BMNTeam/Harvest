@@ -118,7 +118,10 @@ class CultureController extends Controller
 
     public function addElementToStock(Request $request)
     {
+        $user_id = Auth::User()->id;
+
         $searchElementsWithSameReproduction = [
+            'user_id'           => $user_id,
             'reproduction_id'   => $request['reproduction'],
             'culture_id'        => $request['select-culture-name'],
             'sort_id'           => $request['select-sort-name']
@@ -126,7 +129,6 @@ class CultureController extends Controller
 
         $stocks = Stock::where( $searchElementsWithSameReproduction )->first();
         $stock = new Stock();
-        $user_id = Auth::User()->id;
 
         $stock->reproduction_id     = intval($request['reproduction']);
         $stock->sort_id             = intval($request['select-sort-name']);
