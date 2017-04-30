@@ -7,15 +7,19 @@ use App\Customer;
 use App\Order;
 use App\Reproduction;
 use App\Stock;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StockController extends Controller
 {
    public function getStocks()
    {
-        $stocks     = Stock::all();
-        $customers  = Customer::all();
-        $orders     = Order::all();
+       $user_id = Auth::User()->id;
+       $user       = User::where('id', $user_id)->first();
+       $stocks     = $user->stock()->get();
+       $customers  = Customer::all();
+       $orders     = Order::all();
 
         //Count number of orders for current sort for active and finished separately
         //Enable or disable remove ability

@@ -33,8 +33,8 @@
             </form>
 
             <div class="buttons--wrapper text-center">
-                <button id="remove"class="action--button hidden-form-button"><i class="fa fa-thumbs-up"> Сохраниь</i></button>
-                <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-thumbs-down"> Отменить</i></button>
+                <button id="remove"class="action--button hidden-form-button"><i class="fa"> Сохранить</i></button>
+                <button class="action--button hidden-form-button popup-modal-dismiss"><i class="fa fa-ban"> Отменить</i></button>
             </div>
 
 

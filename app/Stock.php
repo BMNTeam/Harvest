@@ -19,4 +19,8 @@ class Stock extends Model
     public function cultures() {
         return $this->hasOne('App\Culture', 'id', 'culture_id');
     }
+
+    public function user() {
+        return $this->belongsTo('App\User', 'id');
+    }
 }

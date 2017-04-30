@@ -18,6 +18,10 @@ class Order extends Model
         return $this->hasOne('App\Customer', 'id', 'customer_id');
     }
 
+    public function user() {
+        return $this->belongsTo('App\User', 'id');
+    }
+
 
 
 }
