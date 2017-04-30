@@ -6,10 +6,64 @@
 
 @section('content')
 
+    @if( isset($foreign_stock) )
+    <div class="material--wrapper">
+        <div class="content--heading">
+            <h4>Найдено на других складах:</h4>
+        </div>
+
+        <div class="active-users--table">
+
+            <table class="table table-hover datatables-init stock-table">
+                <thead>
+                <tr>
+                    <th class="hidden">Номер</th>
+                    <th>Организация</th>
+                    <th>Культура</th>
+                    <th>Сорт</th>
+                    <th>Репродукция</th>
+                    <th>Семена (ц)</th>
+
+
+                </tr>
+                </thead>
+
+                <tbody>
+                @foreach($foreign_stock as $stock)
+                    <tr>
+                        <td scope="row" class="stock-id hidden">{{ $stock->id }}</td>
+                        <td>{{ \App\User::where('id', $stock->user_id)->first()->name }}</td>
+                        <td class="culture-name">{{ $stock->cultures['culture_name']}}</td>
+                        <td class="sort-name">{{ $stock->sorts->sort_name  }}</td>
+                        <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>
+                        <td class="corns"> {{ $stock->corns }} </td>
+
+
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+    @elseif( isset($error_not_found))
+        <div class="material--wrapper">
+            <div class="content--heading">
+                <h4>Найдено на других складах:</h4>
+            </div>
+            <br>
+            <div class="alert alert-danger">
+                {{ $error_not_found }}
+            </div>
+        </div>
+    @endif
+
     <div class="material--wrapper">
         <div class="content--heading">
             <h4>Склад:</h4>
         </div>
+
 
         <div class="active-users--table">
 
@@ -37,7 +91,17 @@
                         <td class="sort-name">{{ $stock->sorts->sort_name  }}</td>
                         <td class="reproduction-name">{{ $stock->reproductions->reproduction_name }}</td>
                         <td class="vall">{{ $stock->vall }}</td>
-                        <td class="corns">{{ $stock->corns }}</td>
+                        <td class="corns" style="white-space: nowrap">
+                            @if($stock->corns == 0)
+                                <form action="{{ route('applications') }}">
+                                    <input name="culture_to_search" type="hidden" value="{{ $stock->cultures['id'] }}">
+                                    <input name="sort_to_search" type="hidden" value="{{ $stock->sorts->id }}">
+                                    <input name="reproduction_to_search" type="hidden" value="{{ $stock->reproductions->id }}">
+
+                                    <button class="btn btn-sm" data-toggle="tooltip" title="Подсмотреть на других складах" type="submit"><i class="fa fa-eye"></i></button>
+                                </form>@else{{ $stock->corns }}
+                            @endif
+                        </td>
                         <td class="created-orders">{{ $stock->active_orders }}</td>
                         <td>{{ $stock -> all_orders }}</td>
                         <td class="text-center special-separator">

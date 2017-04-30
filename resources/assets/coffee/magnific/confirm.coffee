@@ -129,13 +129,17 @@ $('.popup-change-customer-info').magnificPopup
 # an Object
 getClickedRowValues = ($parentTr) ->
   RowRecord = new Object
+  NumberOfCorns = $parentTr.find('.corns').text().replace(/\s/g,'');
+
+  if(NumberOfCorns == '')
+    NumberOfCorns = 0
 
   RowRecord.orderId = $parentTr.find('.stock-id').text()
   RowRecord.cultureName = $parentTr.find('.culture-name').text()
   RowRecord.sortName = $parentTr.find('.sort-name').text()
   RowRecord.reproductionName = $parentTr.find('.reproduction-name').text()
   RowRecord.vall = $parentTr.find('.vall').text()
-  RowRecord.corns = $parentTr.find('.corns').text()
+  RowRecord.corns = NumberOfCorns
   RowRecord.customer = $parentTr.find('.customer_name').text()
   RowRecord.maximumInStock = $parentTr.find('.stock-id').attr('data-corns-in-stock')
 
