@@ -19,9 +19,15 @@
                         <div class="col-md-6">
 
 
-                            <div class="form-group">
+                            <div class="form-group login-width">
                                 <label for="name">Имя пользователя</label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Петров А.А.">
+                                <select class="form-control select2-special " name="name" id="select-culture-name" >
+                                    <?php $users = \App\User::all(); ?>
+                                    @foreach( $users as $user)
+                                        <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                        @endforeach
+
+                                </select>
                             </div>
                             <a href="{{ route('register') }}">Зарегистрироваться</a>
 

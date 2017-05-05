@@ -8,7 +8,7 @@
 
     <div class="material--wrapper">
         <div class="content--heading">
-            <h4>Наличие на складах базовых предприятий:</h4>
+            <h4>Наличие на складах базовых хозяйств:</h4>
         </div>
 
 

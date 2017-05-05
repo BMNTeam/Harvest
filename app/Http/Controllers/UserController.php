@@ -14,8 +14,8 @@ class UserController extends Controller
         $recaptcha = $request['g-recaptcha-response'];
         $url = 'https://www.google.com/recaptcha/api/siteverify';
         $query_fields = [
-            'secret' => '6LdoDSAUAAAAAKdIku4akxFyqQ5AsiQyREwakmFr',
-            'response' => $recaptcha
+            'secret'    => '6LdoDSAUAAAAAKdIku4akxFyqQ5AsiQyREwakmFr',
+            'response'  => $recaptcha
         ];
         $http_query = http_build_query($query_fields);
         //cURL
