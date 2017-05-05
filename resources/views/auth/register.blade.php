@@ -17,7 +17,7 @@
                             <label for="name" class="col-md-4 control-label">Название хозяйства</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus placeholder="например: СНИИСХ">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -63,7 +63,13 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="additional-information" class="col-md-4 control-label">Дополнительная информация</label>
+                            <div class="col-md-6">
+                                <textarea class="form-control w100" name="additional-information" id="additional-information" cols="30" rows="5" placeholder="например: телефон"></textarea>
 
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

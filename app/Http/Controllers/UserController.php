@@ -18,16 +18,17 @@ class UserController extends Controller
             'response' => $recaptcha
         ];
         $http_query = http_build_query($query_fields);
-
         //cURL
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL,$url);
         curl_setopt($ch,CURLOPT_POSTFIELDS,$http_query);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, 1);
         $result = curl_exec($ch);
         $result = json_decode($result);
         /*End cUrl*/
+        /*END Google reCaptcha*/
 
+        // If reCaptcha is correct then register user if not redirect with error
         if( $result->success === true ){
 
             $this->validate( $request, [
@@ -36,30 +37,27 @@ class UserController extends Controller
                 'password'      => 'required|min:4'
             ]);
 
-            $email          = $request['email'];
-            $name     = $request['name'];
-            $password       = bcrypt($request['password']);
+            $email                  = $request['email'];
+            $name                   = $request['name'];
+            $password               = bcrypt($request['password']);
+            $additional_information = $request['additional-information'];
 
             $user = new User();
-            $user->email                = $email;
-            $user->name                 = $name;
-            $user->password             = $password;
+            $user->email                    = $email;
+            $user->name                     = $name;
+            $user->password                 = $password;
+            $user->additional_information   = $additional_information;
 
             $user->save();
 
             Auth::login($user);
 
             return redirect()->route('users');
-        }else{
-
+        }
+        else
+        {
             return redirect()->back()->withErrors(['reCaptcha' => 'А вы точно не робот?']);
         }
-
-
-
-
-
-
     }
 
     public function postSignIn(Request $request)

@@ -266,3 +266,6 @@ i.fa.fa-pencil-square-o::before {
   -webkit-transform: translateX(7px);
       -ms-transform: translateX(7px);
           transform: translateX(7px); }
+
+.w100 {
+  width: 100%; }
