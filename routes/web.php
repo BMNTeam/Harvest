@@ -75,7 +75,11 @@ Route::get('/test', [
     ]
 );
 
-
+Route::get('/default_farms', [
+    'uses'           => 'Farms@getAllCultures',
+    'as'            => 'default_farms',
+    'middleware'    => 'auth'
+]);
 
 /*Turned off routes*/
 //Auth::routes();
