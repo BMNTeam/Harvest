@@ -10,26 +10,56 @@ class UserController extends Controller
 {
     public function postSignUp(Request $request)
     {
-        $this->validate( $request, [
-            'email'         => 'required|email|unique:users',
-            'name'          => 'required|max:120',
-            'password'      => 'required|min:4'
-        ]);
+        // Google reCaptcha part
+        $recaptcha = $request['g-recaptcha-response'];
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $query_fields = [
+            'secret' => '6LdoDSAUAAAAAKdIku4akxFyqQ5AsiQyREwakmFr',
+            'response' => $recaptcha
+        ];
+        $http_query = http_build_query($query_fields);
 
-        $email          = $request['email'];
-        $name     = $request['name'];
-        $password       = bcrypt($request['password']);
+        //cURL
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,$http_query);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($ch);
+        $result = json_decode($result);
+        /*End cUrl*/
 
-        $user = new User();
-        $user->email                = $email;
-        $user->name                 = $name;
-        $user->password             = $password;
+        if( $result->success === true ){
 
-        $user->save();
+            $this->validate( $request, [
+                'email'         => 'required|email|unique:users',
+                'name'          => 'required|max:120',
+                'password'      => 'required|min:4'
+            ]);
 
-        Auth::login($user);
+            $email          = $request['email'];
+            $name     = $request['name'];
+            $password       = bcrypt($request['password']);
 
-        return redirect()->route('users');
+            $user = new User();
+            $user->email                = $email;
+            $user->name                 = $name;
+            $user->password             = $password;
+
+            $user->save();
+
+            Auth::login($user);
+
+            return redirect()->route('users');
+        }else{
+
+            return redirect()->back()->withErrors(['reCaptcha' => 'А вы точно не робот?']);
+        }
+
+
+
+
+
+
     }
 
     public function postSignIn(Request $request)
