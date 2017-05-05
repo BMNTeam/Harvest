@@ -24,6 +24,7 @@
                                 <label for="name">Имя пользователя</label>
                                 <input type="text" class="form-control" name="name" id="name" placeholder="Петров А.А.">
                             </div>
+                            <a href="{{ route('register') }}">Зарегистрироваться</a>
 
 
                         </div>
