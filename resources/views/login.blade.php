@@ -12,7 +12,6 @@
         <div class="add-user--form">
             <form action="{{ route('login') }}" method="POST" class="add">
 
-
                 <div class="form-group">
                     <div class="row">
                         {{ csrf_field() }}
