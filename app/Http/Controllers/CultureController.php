@@ -14,6 +14,7 @@ class CultureController extends Controller
 
     public function addCulture(Request $request) {
 
+
         //Add culture
         if( ! empty( $request['culture']) && ! isset( $request['create-element-in-stock']) )
         {
@@ -46,6 +47,13 @@ class CultureController extends Controller
 
             return redirect()->back();
         }
+
+        // If sent empty form redirect user back
+        if( is_null( $request['culture']) && is_null( $request['sort'] )) {
+            return redirect()->back();
+        }
+
+
 
     }
 
