@@ -146,6 +146,43 @@ $('.popup-change-customer-info').magnificPopup({
   }
 });
 
+$('.print-order').magnificPopup({
+  type: 'inline',
+  preloader: false,
+  modal: true,
+  callbacks: {
+    open: function() {
+      var $content, $form, $parentTr, currentDay, currentMonth, currentOrder, currentYear, dateContainer, formValues, generatedDate;
+      currentOrder = new Object;
+      $content = this.currItem.el[0];
+      $parentTr = $($content).parents('tr');
+      $form = $('#printOrder');
+      currentOrder = getClickedRowValues($parentTr);
+      console.dir(currentOrder);
+      formValues = new Object;
+      formValues.customer = $form.find('.print-customer');
+      formValues.sort = $form.find('.print-sort');
+      formValues.amount = $form.find('.print-amount');
+      formValues.id = $form.find('.print-id');
+      formValues.customer.text(currentOrder.customer);
+      formValues.sort.text(currentOrder.sortName);
+      formValues.amount.text(currentOrder.corns);
+      formValues.id.text(currentOrder.orderId);
+      dateContainer = $('#orderPrintDate');
+      generatedDate = new Date();
+      currentDay = dateContainer.find('.current-day');
+      currentMonth = dateContainer.find('.current-month');
+      currentYear = dateContainer.find('.current-year');
+      currentDay.text(generatedDate.getDate());
+      currentMonth.text(generatedDate.getMonth());
+      currentYear.text(generatedDate.getFullYear());
+      return $('#print-order').click(function() {
+        return $form.printThis();
+      });
+    }
+  }
+});
+
 getClickedRowValues = function($parentTr) {
   var NumberOfCorns, RowRecord;
   RowRecord = new Object;

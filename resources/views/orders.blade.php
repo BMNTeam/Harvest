@@ -52,6 +52,8 @@
                                 @if( $order->status !== 'Выполнена')
                                     <a class="remove popup-modal" data-remove="{{ route('remove_order', $order->id) }}"  href="#showModal"><i class="fa fa-remove"></i></a>
                                 @endif
+
+                                <a class=" remove print-order popup-modal"  href="#printOrder"><i class="fa fa-print"></i></a>
                         </td>
 
                     </tr>
@@ -76,5 +78,6 @@
     </div>
     @include('includes.pop-ups.pop-up-finish-order')
     @include('includes.pop-ups.pop-up-message')
+    @include('includes.pop-ups.pop-up-order-print')
 
 @endsection
