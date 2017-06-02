@@ -1,3 +1,5 @@
+
+
 #Magnific Pop-up section
 $('.popup-modal').magnificPopup
   type: 'inline'
@@ -122,6 +124,46 @@ $('.popup-change-customer-info').magnificPopup
 
 
 
+# Print order details
+$('.print-order').magnificPopup
+  type: 'inline'
+  preloader: false
+  modal: true
+  callbacks:
+    open: ()->
+      currentOrder = new Object
+      $content = this.currItem.el[0]
+      $parentTr = $($content).parents('tr')
+      $form = $('#printOrder')
+      currentOrder = getClickedRowValues($parentTr)
+      console.dir(currentOrder)
+
+      # Find values to replace in the pop-up form
+      formValues            = new Object;
+      formValues.customer   = $form.find('.print-customer')
+      formValues.sort       = $form.find('.print-sort')
+      formValues.amount     = $form.find('.print-amount')
+      formValues.id         = $form.find('.print-id')
+
+      # Set values
+      formValues.customer.text( currentOrder.customer )
+      formValues.sort.text    ( currentOrder.sortName )
+      formValues.amount.text  ( currentOrder.corns    )
+      formValues.id.text      ( currentOrder.orderId  )
+
+      # Set document date
+      dateContainer = $('#orderPrintDate')
+      generatedDate = new Date()
+      currentDay    = dateContainer.find('.current-day')
+      currentMonth  = dateContainer.find('.current-month')
+      currentYear   = dateContainer.find('.current-year')
+
+      currentDay.text   ( generatedDate.getDate())
+      currentMonth.text ( generatedDate.getMonth())
+      currentYear.text  ( generatedDate.getFullYear())
+
+      $('#print-order').click ()->
+        $form.printThis()
 
 
 
